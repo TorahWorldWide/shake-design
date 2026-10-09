@@ -3,430 +3,774 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>מאסטר שייק — באיזה סגנון תרצי את האפליקציה?</title>
+<meta name="theme-color" content="#1f1c19">
+<title>מאסטר שייק — 10 כיוונים שונים לגמרי</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&family=Bellefair&family=Caveat:wght@700&family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Gveret+Levin&family=Heebo:wght@400;500;600;700;800;900&family=Rubik:wght@400;500;600;700&family=Varela+Round&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alef:wght@400;700&family=Assistant:wght@400;600;700;800&family=Caveat:wght@700&family=David+Libre:wght@400;500;700&family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Gveret+Levin&family=Heebo:wght@400;500;700;800&family=Karantina:wght@400;700&family=Miriam+Libre:wght@400;700&family=Noto+Color+Emoji&family=Noto+Sans+Hebrew:wght@400;600;700&family=Rubik:wght@400;500;700&family=Secular+One&family=Suez+One&family=Varela+Round&display=swap">
 <style>
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
-body{margin:0;background:#ece7df;font-family:"Heebo","Assistant",Arial,sans-serif;color:#222;font-size:17px;line-height:1.4}
+body{margin:0;background:#efe9e1;color:#1f1c19;font-family:Assistant,Heebo,Arial,"Liberation Sans",sans-serif;font-size:17px;line-height:1.45;overflow-x:hidden}
+.emo{font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif;font-style:normal;line-height:1}
 
-/* ---------- gallery shell ---------- */
-.page{max-width:560px;margin:0 auto;padding:20px 8px 40px}
-.page h1{font-size:27px;line-height:1.25;margin:4px 6px 10px;font-weight:800}
-.sub{font-size:20px;margin:0 6px 6px;font-weight:600;color:#3a332c}
-.hint{font-size:16px;color:#6b6258;margin:0 6px 20px}
-.card{display:block;background:#fff;border-radius:22px;box-shadow:0 2px 12px rgba(0,0,0,.09);margin:0 0 28px;overflow:hidden;color:inherit;text-decoration:none;-webkit-tap-highlight-color:transparent}
-.card-top{display:flex;gap:12px;align-items:center;padding:14px 14px 12px}
-.badge{flex:none;width:54px;height:54px;border-radius:50%;background:#2b2724;color:#fff;font-size:29px;font-weight:800;display:flex;align-items:center;justify-content:center;line-height:1}
-.cname{font-size:22px;font-weight:800;line-height:1.2}
-.cfeel{font-size:16px;color:#5d554c;margin-top:3px;line-height:1.35}
-.preview{position:relative;max-height:690px;overflow:hidden;border-top:1px solid #eee}
-.preview::after{content:"";position:absolute;left:0;right:0;bottom:0;height:56px;background:linear-gradient(rgba(255,255,255,0),#fff 90%);pointer-events:none}
-.card-btn{display:block;margin:8px 14px 16px;position:relative;z-index:1;background:#2b2724;color:#fff;text-align:center;font-size:20px;font-weight:700;padding:14px;border-radius:14px}
-.outro{text-align:center;font-size:20px;font-weight:700;margin:10px 6px 0;color:#3a332c}
-
-/* ---------- full-screen view ---------- */
+/* ================= gallery shell ================= */
+.g-main{max-width:440px;margin:0 auto;padding:20px 10px 44px}
+.g-main h1{font-size:28px;line-height:1.2;font-weight:800;margin:6px 4px 8px}
+.g-lead{font-size:19px;line-height:1.4;margin:0 4px 14px;color:#4a433b}
+.g-prev{display:inline-flex;align-items:center;min-height:48px;padding:0 20px;margin:0 4px 24px;border-radius:999px;background:#fff;border:2px solid #1f1c19;color:#1f1c19;font-weight:700;font-size:18px;text-decoration:none}
+.g-card{background:#fff;border-radius:22px;box-shadow:0 3px 16px rgba(40,30,20,.10);margin:0 0 28px;overflow:hidden;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.g-ch{display:flex;gap:12px;align-items:center;padding:14px 14px 12px}
+.g-badge{flex:none;width:52px;height:52px;border-radius:50%;background:#1f1c19;color:#fff;font:800 27px/52px Heebo,Arial,sans-serif;text-align:center}
+.g-cn{font-size:23px;line-height:1.2;font-weight:700}
+.g-cf{font-size:16px;line-height:1.4;color:#5b544c;margin-top:3px}
+.g-pv{position:relative;height:660px;overflow:hidden;border-top:1px solid #e6e0d8;isolation:isolate}
+.g-pv::after{content:"";position:absolute;left:0;right:0;bottom:0;height:44px;background:linear-gradient(rgba(255,255,255,0),rgba(255,255,255,.92));pointer-events:none;z-index:5}
+.g-pv .d{pointer-events:none;min-height:100%}
+.g-open{display:flex;align-items:center;justify-content:center;min-height:54px;margin:12px 14px 16px;border-radius:14px;background:#1f1c19;color:#fff;font-size:19px;font-weight:700;text-decoration:none}
+.g-outro{text-align:center;font-size:20px;font-weight:700;margin:8px 4px 0}
 #full{min-height:100vh;background:#fff}
-.bar{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:10px;background:#2b2724;color:#fff;padding:10px}
-.back{flex:none;background:#fff;color:#2b2724;border:0;font:inherit;font-size:20px;font-weight:800;padding:10px 16px;border-radius:12px;cursor:pointer;line-height:1.2}
-.bar-title{font-size:17px;font-weight:700;line-height:1.25}
-.full-app{max-width:560px;margin:0 auto}
-.full-app .app{min-height:calc(100vh - 64px)}
-.endbox{background:#2b2724;color:#fff;text-align:center;padding:24px 16px 34px;font-size:20px;line-height:1.5}
-.endbox b{font-size:28px}
-.endbox .back{margin-top:16px;font-size:21px;padding:14px 22px}
+.f-bar{position:sticky;top:0;z-index:100;height:64px;display:flex;align-items:center;gap:12px;padding:0 10px;background:#1f1c19;color:#fff}
+.f-back{flex:none;min-height:48px;min-width:96px;padding:0 18px;border:0;border-radius:12px;background:#fff;color:#1f1c19;font:800 20px Assistant,Heebo,Arial,sans-serif;cursor:pointer}
+.f-title{font-size:18px;font-weight:700;line-height:1.2;min-width:0}
+.f-body{max-width:480px;margin:0 auto}
+.f-end{background:#1f1c19;color:#fff;text-align:center;padding:26px 16px 40px;font-size:19px;line-height:1.5}
+.f-end b{display:block;font-size:30px}
+.f-end .f-back{margin-top:16px}
 
-/* ---------- shared mockup structure (all styles) ---------- */
-.app{position:relative;padding:18px 10px 24px;font-size:17px;line-height:1.3;color:#1a1a1a;background:#fff;text-align:right}
-.app-title{font-size:30px;font-weight:800;margin:0 0 12px;line-height:1.15}
-.tabs{display:flex;gap:8px}
-.tab{flex:1;text-align:center;padding:10px 0;font-size:18px;font-weight:700;border-radius:12px}
-.legend{display:none}
-.tbl{margin-top:22px}
-.tbl-h{font-size:22px;font-weight:800;margin:0 0 8px;line-height:1.2}
-.row{display:grid;align-items:center;column-gap:5px;padding:7px 4px;min-height:46px}
-.shakes .row{grid-template-columns:minmax(0,1fr) var(--wnum,100px) var(--whalf,36px) var(--wmiss,64px)}
-.spices .row{grid-template-columns:minmax(0,1fr) var(--wnum,100px) var(--wproc,66px)}
-.hdr{min-height:0;font-size:16px;font-weight:700;color:#666;padding-top:5px;padding-bottom:5px}
-.hdr .c-half,.hdr .c-miss{font-size:16px;font-weight:700}
-.c-name{font-size:17px;font-weight:600;overflow-wrap:anywhere;min-width:0}
-.c-num{display:flex;align-items:center;justify-content:center;gap:2px}
-.n{min-width:36px;text-align:center;font-size:23px;font-weight:800;font-variant-numeric:tabular-nums;line-height:1.25}
-.pm{flex:none;width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;font-size:21px;font-weight:700;line-height:1;user-select:none;-webkit-user-select:none;background:#eee;color:#333;cursor:pointer}
-.c-half{text-align:center;font-size:20px;font-weight:600;font-variant-numeric:tabular-nums}
-.c-miss{text-align:center;font-size:16px;font-weight:700;white-space:nowrap;line-height:1.2}
-.lbl{display:none}
-.chip{display:none}
+/* ================= shared mockup base ================= */
+.d{position:relative;text-align:right;font-size:17px;line-height:1.35;overflow-x:clip}
+.d button{font:inherit;color:inherit;background:none;border:0;padding:0;margin:0;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation;line-height:1.15;min-width:44px}
 
-/* ===== 1. לבן נקי + ירוק טרי ===== */
-.s1 .app{background:#fff;font-family:"Heebo",Arial,sans-serif;color:#111}
-.s1 .app-title{font-size:32px;font-weight:900}
-.s1 .tabs{background:#f1f4f2;border-radius:16px;padding:4px;gap:4px}
-.s1 .tab{color:#5a625d;border-radius:12px}
-.s1 .tab.on{background:#1fa055;color:#fff;box-shadow:0 2px 6px rgba(31,160,85,.3)}
-.s1 .tbl-h{color:#14833f;display:flex;align-items:center;gap:8px}
-.s1 .tbl-h::before{content:"";width:11px;height:11px;border-radius:50%;background:#2fbf6a}
-.s1 .tbl-body{border:1px solid #e1eae4;border-radius:18px;overflow:hidden}
-.s1 .row{border-bottom:1px solid #edf2ee}
-.s1 .row:last-child{border-bottom:0}
-.s1 .hdr{background:#f5faf6;color:#5f6b64}
-.s1 .n{color:#111;font-size:24px}
-.s1 .pm{background:#fff;border:1.5px solid #cfd9d3;color:#4a524d}
-.s1 .pm.plus{background:#1fa055;border-color:#1fa055;color:#fff}
-.s1 .low{background:#fff1ee}
-.s1 .low .n{color:#d93025}
-.s1 .c-miss.has{color:#c2410c;background:#fff1e4;border-radius:8px;padding:3px 0}
+/* ===== 1 · Excel sheet ===== */
+.d1{font-family:"Noto Sans Hebrew",Arial,"Liberation Sans",sans-serif;background:#fff;color:#222;display:flex;flex-direction:column;height:660px}
+.d1.full{height:calc(100vh - 64px);height:calc(100dvh - 64px)}
+.x-top{flex:none;background:#217346;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 12px;min-height:52px}
+.x-file{font-weight:700;font-size:18px;display:flex;align-items:center;gap:8px}
+.x-ico{font-style:normal;width:26px;height:26px;border-radius:5px;background:#fff;color:#217346;font:700 17px/26px Arial,sans-serif;text-align:center}
+.x-saved{font-size:16px;opacity:.9}
+.x-fx{flex:none;display:flex;align-items:center;border-bottom:1px solid #c6c6c6;min-height:44px;font-size:16px}
+.x-ref{flex:none;width:58px;text-align:center;border-left:1px solid #c6c6c6;color:#444;line-height:44px}
+.x-f{flex:none;width:40px;text-align:center;color:#888;font-style:italic;border-left:1px solid #c6c6c6;line-height:44px;font-family:Georgia,serif}
+.x-val{padding:0 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.x-sheet{flex:1 1 auto;min-height:0;overflow:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+.x-t{border-collapse:separate;border-spacing:0;table-layout:fixed;width:488px;font-size:16px}
+.x-t th,.x-t td{height:45px;padding:0 6px;border-left:1px solid #d4d4d4;border-bottom:1px solid #d4d4d4;background:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:400;text-align:right}
+.x-t thead th{position:sticky;top:0;z-index:2;background:#f2f2f2;font-weight:700;border-bottom:2px solid #a9a9a9;text-align:center}
+.x-t thead th.x-nm{text-align:right}
+.x-t .x-rn{position:sticky;right:0;z-index:1;background:#f2f2f2;color:#666;text-align:center;padding:0;border-right:1px solid #d4d4d4}
+.x-t .x-nm{position:sticky;right:30px;z-index:1;font-weight:600;border-left:2px solid #a9a9a9}
+.x-t thead .x-rn,.x-t thead .x-nm{z-index:3}
+.x-t tbody tr:nth-child(even) td{background:#f4f7f5}
+.x-t thead th.g{background:#c6efce;color:#006100}
+.x-t thead th.y{background:#ffeb9c;color:#7a4500}
+.x-t thead th.r{background:#ffc7ce;color:#9c0006}
+.x-t td.x-c{text-align:center;font-variant-numeric:tabular-nums}
+.x-t tbody td.y{background:#ffeb9c;color:#7a4500;font-weight:700}
+.x-t tbody td.r{background:#ffc7ce;color:#9c0006;font-weight:700}
+.x-t td.x-s{padding:0}
+.x-t tbody td.ok{background:#c6efce;color:#006100}
+.x-t tbody td.bad{background:#ffc7ce;color:#9c0006}
+.x-t tbody td.x-nm.bad{background:#fff0f2;color:#9c0006;font-weight:700}
+.x-t td.sel{box-shadow:inset 0 0 0 2px #217346}
+.x-step{display:flex;align-items:center;height:44px}
+.x-step span{flex:1;text-align:center;font-size:18px;font-weight:700;font-variant-numeric:tabular-nums}
+.x-step button{flex:none;width:44px;height:44px;font-size:25px;font-family:Arial,"Liberation Sans",sans-serif;color:#217346;background:rgba(255,255,255,.55)}
+.x-step button:first-child{border-left:1px solid rgba(0,0,0,.12)}
+.x-step button:last-child{border-right:1px solid rgba(0,0,0,.12)}
+.x-t tr.x-sect td{background:#d9e1f2!important;font-weight:700;color:#1f3864}
+.x-t tr.x-hdr2 td{background:#f2f2f2!important;font-weight:700;text-align:center}
+.x-t tr.x-hdr2 td.x-nm{text-align:right}
+.x-t td.x-cnt{background:#e2efda!important;color:#1e4e1e;font-weight:700}
+.x-tabs{flex:none;position:relative;z-index:6;display:flex;background:#f2f2f2;border-top:1px solid #c6c6c6}
+.x-tabs button{flex:1 1 0;min-height:48px;font-size:16px;color:#444;border-left:1px solid #d4d4d4;padding:0 4px}
+.x-tabs .on{background:#fff;color:#217346;font-weight:700;box-shadow:inset 0 -3px 0 #217346}
 
-/* ===== 2. בר שייקים צבעוני ===== */
-.s2 .app{background:#fff;font-family:"Rubik","Heebo",Arial,sans-serif;color:#2a2a2a}
-.s2 .app-title{font-size:32px;font-weight:700}
-.s2 .app-title::after{content:"";display:block;width:110px;height:7px;border-radius:4px;margin-top:6px;background:linear-gradient(90deg,#5cc45a 0 20%,#ff9a3c 0 40%,#ff7aa2 0 60%,#9b67d6 0 80%,#9a6a48 0)}
-.s2 .tab{border:2px solid #ececec;color:#555;border-radius:999px;font-weight:600}
-.s2 .tab.on{background:#ff8a4c;border-color:#ff8a4c;color:#fff}
-.s2 .tbl-h{font-weight:700}
-.s2 .row{background:var(--tint,#f6f6f6);border-radius:14px;margin-bottom:6px;border-right:8px solid var(--chip,#ccc)}
-.s2 .hdr{background:transparent;border-right-color:transparent;color:#888;font-weight:500;margin-bottom:2px}
-.s2 .n{color:#2a2a2a;font-weight:700}
-.s2 .pm{background:#fff;color:#444;box-shadow:0 1px 3px rgba(0,0,0,.15)}
-.s2 .low .n{background:#e2474f;color:#fff;border-radius:10px}
-.s2 .c-miss.has{color:#d6336c}
-.s2 .k-g{--chip:#5cc45a;--tint:#edf8eb}
-.s2 .k-o{--chip:#ff9a3c;--tint:#fff1e3}
-.s2 .k-p{--chip:#ff7aa2;--tint:#ffeef3}
-.s2 .k-b{--chip:#9a6a48;--tint:#f5ede6}
-.s2 .k-v{--chip:#9b67d6;--tint:#f4edfc}
-.s2 .k-r{--chip:#e2474f;--tint:#fdecec}
-.s2 .k-t{--chip:#d2ac72;--tint:#faf3e6}
-.s2 .k-y{--chip:#f2c200;--tint:#fff8d9}
-.s2 .k-c{--chip:#c9bfa6;--tint:#f7f4ec}
-.s2 .k-a{--chip:#37b6be;--tint:#e7f7f8}
+/* ===== 2 · Big-number tiles ===== */
+.d2{font-family:Assistant,Heebo,Arial,"Liberation Sans",sans-serif;background:#edf1f6;color:#1c2a3a;padding:16px 12px 26px}
+.t-head{display:flex;align-items:baseline;justify-content:space-between;margin:2px 4px 12px}
+.t-title{font:32px/1.1 "Secular One",Heebo,Arial,sans-serif}
+.t-date{font-size:16px;color:#5d6b7c}
+.t-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:14px}
+.d2 .t-tabs button{min-height:46px;border-radius:14px;background:#fff;font-weight:700;font-size:16px;color:#3a4a5c;box-shadow:0 1px 3px rgba(20,40,80,.1)}
+.d2 .t-tabs .on{background:#1c2a3a;color:#fff}
+.t-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.d2 .t{background:#fff;border-radius:22px;box-shadow:0 5px 16px rgba(20,40,80,.09);padding:12px 12px 10px;display:flex;flex-direction:column;min-width:0}
+.t-name{font-size:17px;font-weight:700;line-height:1.25}
+.t-n{font:60px/1 "Secular One",Heebo,Arial,sans-serif;margin:6px 0 0;font-variant-numeric:tabular-nums}
+.t-cap{font-size:16px;font-weight:700;color:#12925a;margin-top:2px}
+.t-chips{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+.d2 .chip{font-size:16px;line-height:1.2;padding:3px 9px;border-radius:999px;font-weight:700}
+.d2 .chip.y{background:#ffe27a;color:#5c4300}
+.d2 .chip.r{background:#ffdad5;color:#a3150a}
+.d2 .chip.h{background:#e6ebf2;color:#3a4a5c}
+.d2 .chip.b{background:#dde9ff;color:#1d4fa8}
+.t-pm{display:flex;gap:8px;margin-top:auto;padding-top:10px}
+.d2 .t-pm button{flex:1;height:44px;border-radius:14px;background:#edf1f6;font-size:26px;font-weight:700;color:#1c2a3a}
+.d2 .t.low{background:#fff3f1;box-shadow:inset 0 0 0 2px #ff9a8c,0 5px 16px rgba(200,40,20,.12)}
+.d2 .t.low .t-n,.d2 .t.low .t-cap{color:#dc2f1b}
+.d2 .t.low .t-pm button{background:#ffe1dc}
+.d2 .t-hero{grid-column:1/-1;flex-direction:row;align-items:center;justify-content:space-between;gap:10px;background:#1c2a3a;color:#fff}
+.t-hero .t-name{color:#c9d6e6;font-weight:600}
+.t-hero .t-cap{color:#7fe3aa}
+.t-hchips{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.t-sub{font:24px/1.2 "Secular One",Heebo,Arial,sans-serif;margin:24px 4px 10px}
+.d2 .tt{padding:10px 12px}
+.d2 .tt .t-n{font-size:38px;margin-top:2px}
 
-/* ===== 3. אייפון קלאסי ===== */
-.s3 .app{background:#f2f2f7;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Heebo","Assistant",Arial,sans-serif;color:#000}
-.s3 .app-title{font-size:34px;font-weight:800;letter-spacing:-.3px}
-.s3 .tabs{background:#e3e3e9;border-radius:10px;padding:3px;gap:0}
-.s3 .tab{border-radius:8px;font-weight:600;font-size:17px;padding:8px 0;color:#000}
-.s3 .tab.on{background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.15);color:#007aff}
-.s3 .tbl-h{font-size:16px;font-weight:600;color:#6d6d72;margin:0 14px 6px}
-.s3 .tbl-body{background:#fff;border-radius:12px;overflow:hidden}
-.s3 .row{border-bottom:1px solid #e5e5ea;padding-right:14px}
-.s3 .row:last-child{border-bottom:0}
-.s3 .hdr{color:#8e8e93;font-weight:500}
-.s3 .hdr .c-half,.s3 .hdr .c-miss{font-weight:500}
-.s3 .c-name{font-weight:400}
-.s3 .n{font-weight:600;font-size:22px}
-.s3 .c-half{font-weight:400;color:#3c3c43}
-.s3 .pm{background:#eeeef0;color:#007aff;font-weight:500;font-size:23px}
-.s3 .low .n{background:#ff3b30;color:#fff;border-radius:17px;min-width:34px;height:34px;line-height:34px;padding:0 4px}
-.s3 .c-miss.has{color:#ff3b30;font-weight:500}
+/* ===== 3 · iOS grouped list ===== */
+.d3{font-family:Heebo,-apple-system,"SF Pro Text","Noto Sans Hebrew",Arial,sans-serif;background:#f2f2f7;color:#000;padding:6px 0 28px}
+.i-nav{display:flex;justify-content:space-between;align-items:center;padding:0 8px;min-height:44px}
+.d3 .i-nav button{min-height:44px;padding:0 8px;color:#007aff;font-size:17px}
+.d3 .i-nav .i-plus{font-size:32px;font-weight:300}
+.i-title{font-size:34px;font-weight:700;line-height:1.15;margin:0 16px 10px;letter-spacing:-.3px}
+.i-seg{display:flex;margin:0 16px 12px;background:#e3e3e8;border-radius:10px;padding:2px}
+.d3 .i-seg button{flex:1 1 0;min-height:44px;border-radius:8px;font-size:16px;font-weight:500}
+.d3 .i-seg .on{background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.12);font-weight:700}
+.i-search{display:flex;align-items:center;gap:8px;margin:0 16px 20px;background:#e3e3e8;border-radius:10px;min-height:44px;padding:0 10px;color:#8a8a8e;font-size:17px}
+.i-sh{display:flex;justify-content:space-between;margin:0 32px 6px;font-size:16px;color:#6d6d72}
+.i-grp{background:#fff;border-radius:12px;margin:0 16px 24px;overflow:hidden}
+.i-row{display:flex;align-items:center;gap:6px;min-height:60px;padding:6px 14px 6px 10px;position:relative}
+.i-row+.i-row::before{content:"";position:absolute;top:0;right:14px;left:0;border-top:1px solid #e0e0e4}
+.i-txt{flex:1;min-width:0;padding:4px 0}
+.i-name{font-size:17px;line-height:1.25}
+.i-sub{font-size:16px;color:#8a8a8e;line-height:1.3;margin-top:1px}
+.i-sub .y::before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;background:#ffcc00;margin-left:5px;vertical-align:1px}
+.i-sub .r{color:#ff3b30}
+.i-sub span,.m-note span,.k-chip,.q-tag,.pill,.r-ing span,.s-st{white-space:nowrap}
+.i-sub .b{color:#007aff}
+.i-step{display:flex;align-items:center;flex:none}
+.d3 .i-step button{width:44px;height:44px;display:flex;align-items:center;justify-content:center;color:#007aff;font-size:26px}
+.i-badge{min-width:36px;height:28px;padding:0 8px;border-radius:14px;background:#e3f5e8;color:#1b7f3b;font-size:17px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;font-variant-numeric:tabular-nums}
+.i-badge.gr{background:#e9e9ee;color:#3c3c43;margin-left:6px}
+.i-row.low .i-badge{background:#ff3b30;color:#fff}
+.i-row.low .i-name{font-weight:700}
+.i-chev{flex:none;width:9px;height:9px;border-left:2.5px solid #c4c4c7;border-bottom:2.5px solid #c4c4c7;transform:rotate(45deg);margin-right:4px}
+.i-foot{text-align:center;font-size:16px;color:#8a8a8e;margin:0 16px}
 
-/* ===== 4. הלוח המחיק שלך ===== */
-.s4{--wnum:106px;--whalf:42px;--wmiss:62px;--wproc:70px}
-.s4 .c-num{gap:4px}
-.s4 .app{background-color:#fcfcfa;background-image:linear-gradient(rgba(70,125,215,.2) 1px,transparent 1px),linear-gradient(90deg,rgba(70,125,215,.2) 1px,transparent 1px);background-size:24px 24px;border:7px solid #c5cad0;border-radius:8px;box-shadow:inset 0 0 0 1px #9aa1a8,inset 0 0 20px rgba(0,0,0,.06);font-family:"Gveret Levin","Comic Sans MS","Segoe Print",cursive,sans-serif;color:#16307a;padding:14px 8px 22px}
-.s4 .app-title{font-size:36px;font-weight:400;display:inline-block;border-bottom:3px solid #16307a;border-radius:0 0 40% 30%/0 0 6px 4px;padding:0 4px}
-.s4 .tabs{gap:16px;justify-content:flex-start}
-.s4 .tab{flex:none;padding:3px 12px;font-weight:400;font-size:22px;color:#16307a;opacity:.5;border:2.5px solid transparent}
-.s4 .tab.on{opacity:1;border-color:#d62828;border-radius:50% 45% 55% 48%/60% 50% 55% 45%}
-.s4 .tbl-h{font-size:28px;font-weight:400;color:#16307a}
-.s4 .row{padding:4px 2px;min-height:46px}
-.s4 .hdr{color:#16307a;border-bottom:2.5px solid #16307a;border-radius:0 0 30% 40%/0 0 4px 6px}
-.s4 .hdr,.s4 .hdr .c-half,.s4 .hdr .c-miss{font-weight:400;font-size:17px}
-.s4 .c-name{font-weight:400;font-size:18px;line-height:1.15}
-.s4 .n{font-family:"Caveat","Gveret Levin","Comic Sans MS",cursive;color:#d62828;font-size:33px;font-weight:700;line-height:1.05;min-width:38px}
-.s4 .hdr .c-half{font-family:inherit;color:#16307a}
-.s4 .c-half{font-family:"Caveat","Gveret Levin",cursive;color:#d62828;font-size:28px;font-weight:700}
-.s4 .pm{width:28px;height:28px;background:rgba(255,255,255,.6);border:2px solid #16307a;color:#16307a;border-radius:50% 46% 54% 48%/52% 50% 48% 50%;font-family:Arial,sans-serif;font-weight:400;font-size:21px}
-.s4 .ok .c-name::before{content:"\2713";color:#1e9e3e;font-family:Arial,sans-serif;font-weight:800;font-size:21px;margin-left:4px}
-.s4 .low .n{border:2.5px solid #d62828;border-radius:50% 45% 55% 48%/55% 50% 48% 52%;transform:rotate(-6deg);padding:0 3px}
-.s4 .c-miss.has{color:#d62828;text-decoration:underline wavy #d62828;text-underline-offset:4px;font-weight:400;font-size:18px}
+/* ===== 4 · Magazine ===== */
+.d4{font-family:"Frank Ruhl Libre","David Libre",Georgia,"Times New Roman","Liberation Serif",serif;background:#f6efe2;color:#1d1813;padding:16px 18px 30px}
+.m-mast{text-align:center;border-top:3px solid #1d1813;border-bottom:1px solid #1d1813;padding:8px 0 6px}
+.m-brand{font-size:22px;font-weight:700;letter-spacing:1px}
+.m-issue{font-size:16px;color:#6b5f50}
+.m-nav{display:flex;justify-content:space-between;border-bottom:1px solid #1d1813;margin-bottom:20px}
+.d4 .m-nav button{min-height:44px;font-size:17px;padding:0 2px;color:#5a4f42}
+.d4 .m-nav .on{color:#1d1813;font-weight:700;text-decoration:underline;text-underline-offset:7px;text-decoration-thickness:2px}
+.m-kick{font-size:16px;letter-spacing:.5px;color:#a3221a;font-weight:700}
+.m-hl{font-size:84px;font-weight:900;line-height:.95;margin:0 0 8px;letter-spacing:-1px}
+.m-deck{font-size:22px;line-height:1.35;margin:0 0 16px;font-weight:500}
+.m-split{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #1d1813;border-bottom:1px solid #1d1813;margin-bottom:26px}
+.m-col{padding:10px 0 10px 12px;min-width:0}
+.m-col+.m-col{border-right:1px solid #1d1813;padding:10px 12px 10px 0}
+.m-col h4{font-size:16px;letter-spacing:1px;margin:0 0 6px;font-weight:700}
+.m-col.r h4{color:#a3221a}
+.m-col p{margin:0 0 6px;font-size:18px;line-height:1.25}
+.m-col .big{font-size:30px;font-weight:900;font-variant-numeric:tabular-nums;margin-left:6px}
+.m-col.r .big{color:#a3221a}
+.d4 .hl{background:linear-gradient(transparent 40%,#ffe066 40%,#ffe066 92%,transparent 92%);padding:0 3px}
+.m-sec{display:flex;align-items:baseline;justify-content:space-between;border-bottom:2px solid #1d1813;padding-bottom:4px}
+.m-sec h3{font-size:28px;font-weight:900;margin:0;line-height:1.1}
+.m-sec span{font-size:16px;color:#6b5f50}
+.m-row{display:flex;align-items:center;gap:6px;min-height:58px;border-bottom:1px solid rgba(29,24,19,.22);padding:6px 0}
+.m-nm{flex:0 1 auto;min-width:0;max-width:58%}
+.m-t{font-size:20px;line-height:1.2}
+.m-note{font-size:16px;color:#6b5f50;line-height:1.3}
+.m-note .r{color:#a3221a;font-weight:700}
+.m-lead{flex:1 1 10px;min-width:10px;border-bottom:2px dotted rgba(29,24,19,.35);align-self:center;margin-top:12px}
+.m-n{flex:none;min-width:40px;text-align:center;font-size:30px;font-weight:700;font-variant-numeric:tabular-nums lining-nums;color:#2c5a39}
+.m-row.low .m-n{color:#a3221a;font-weight:900}
+.m-row.low .m-t{font-weight:700}
+.m-pm{flex:none;display:flex;gap:4px}
+.d4 .m-pm button{width:44px;height:44px;border:1px solid #1d1813;border-radius:50%;font-size:22px}
+.m-box{border-top:4px double #1d1813;border-bottom:1px solid #1d1813;margin-top:28px;padding:10px 0 8px}
+.m-box h3{font-size:24px;font-weight:900;margin:0 0 4px}
+.m-tg{display:grid;grid-template-columns:1fr 1fr;column-gap:16px}
+.m-tr{display:flex;justify-content:space-between;align-items:baseline;gap:6px;border-bottom:1px solid rgba(29,24,19,.18);padding:7px 0;font-size:17px;line-height:1.25;min-width:0}
+.m-tr b{font-size:22px;font-variant-numeric:tabular-nums;color:#2c5a39}
+.m-tr em{display:block;font-style:normal;font-size:16px;color:#6b5f50}
+.m-end{text-align:center;margin-top:22px;font-size:16px;color:#6b5f50;letter-spacing:2px}
 
-/* ===== 5. שמיים ושמש ===== */
-.s5 .app{background:linear-gradient(180deg,#cfeaff 0%,#e6f4ff 40%,#f1f9ff 100%);font-family:"Rubik","Heebo",Arial,sans-serif;color:#0d3b66}
-.s5 .app-head{position:relative}
-.s5 .app-head::before{content:"";position:absolute;left:2px;top:-6px;width:54px;height:54px;border-radius:50%;background:radial-gradient(circle,#ffd43b 0 44%,rgba(255,212,59,.35) 46%,rgba(255,212,59,0) 70%)}
-.s5 .app-title{font-size:32px;font-weight:700}
-.s5 .tab{background:#fff;color:#0d3b66;border-radius:999px;box-shadow:0 2px 6px rgba(13,59,102,.08);font-weight:600}
-.s5 .tab.on{background:#ffd43b;color:#3d2e00}
-.s5 .tbl-h{display:inline-block;background:#fff3bf;color:#7a5a00;border-radius:999px;padding:3px 16px;font-size:21px;font-weight:700}
-.s5 .tbl-body{background:#fff;border-radius:20px;box-shadow:0 4px 14px rgba(40,110,180,.12);overflow:hidden;padding:4px 0}
-.s5 .row{border-bottom:1px solid #e8f2fb}
-.s5 .row:last-child{border-bottom:0}
-.s5 .hdr{color:#5b85ab}
-.s5 .n{color:#0d3b66;font-weight:700}
-.s5 .pm{background:#fff;border:2px solid #a9d4f5;color:#1c7ed6}
-.s5 .pm.plus{background:#3a9be8;border-color:#3a9be8;color:#fff}
-.s5 .low{background:#fff6cc}
-.s5 .low .n{color:#e8590c}
-.s5 .c-miss.has{color:#e8590c}
+/* ===== 5 · Dark control room ===== */
+.d5{font-family:Rubik,Heebo,Arial,"Liberation Sans",sans-serif;background:#0b1220;color:#e6edf7;padding:14px 12px 0}
+.d5.full{min-height:calc(100vh - 64px)}
+.k-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.k-title{font-size:28px;font-weight:700}
+.k-live{font-size:16px;color:#3ef2b4;display:flex;align-items:center;gap:7px}
+.k-live i{width:10px;height:10px;border-radius:50%;background:#3ef2b4;box-shadow:0 0 10px #3ef2b4}
+.k-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:18px}
+.k-kpi{background:#121c2e;border:1px solid #1f2b44;border-radius:14px;padding:9px 10px;min-width:0}
+.k-kpi span{display:block;font-size:16px;color:#8fa0bb;line-height:1.2}
+.k-kpi b{font-size:30px;font-weight:700;line-height:1.15;font-variant-numeric:tabular-nums}
+.k-kpi.m b{color:#3ef2b4;text-shadow:0 0 12px rgba(62,242,180,.5)}
+.k-kpi.a b{color:#ffb547;text-shadow:0 0 12px rgba(255,181,71,.4)}
+.k-kpi.r{border-color:rgba(255,93,108,.6);box-shadow:0 0 18px rgba(255,93,108,.18)}
+.k-kpi.r b{color:#ff5d6c;text-shadow:0 0 14px rgba(255,93,108,.8)}
+.k-sec{display:flex;justify-content:space-between;align-items:baseline;gap:8px;font-size:16px;color:#8fa0bb;margin:4px 2px 8px}
+.k-sec b{font-size:19px;color:#e6edf7;font-weight:500}
+.k-row{display:flex;gap:10px;align-items:center;background:#121c2e;border:1px solid #1f2b44;border-radius:14px;padding:9px 10px 9px 8px;margin-bottom:8px}
+.k-main{flex:1;min-width:0}
+.k-top{display:flex;justify-content:space-between;align-items:baseline;gap:6px}
+.k-name{font-size:17px;line-height:1.25}
+.k-n{font-size:24px;font-weight:700;color:#3ef2b4;font-variant-numeric:tabular-nums;white-space:nowrap}
+.k-n small{font-size:16px;color:#5d6f8c;font-weight:400}
+.k-bar{position:relative;height:10px;border-radius:5px;background:#1f2b44;margin:6px 0 2px}
+.k-bar i{position:absolute;right:0;top:0;bottom:0;border-radius:5px;background:linear-gradient(270deg,#25cf96,#3ef2b4);box-shadow:0 0 10px rgba(62,242,180,.45);width:calc(var(--v) * 5%)}
+.k-bar u{position:absolute;top:-5px;bottom:-5px;width:4px;margin-right:-2px;border-radius:2px;background:#ffb547;box-shadow:0 0 8px #ffb547;right:calc(var(--w) * 5%)}
+.k-meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px}
+.k-chip{font-size:16px;line-height:1.3;padding:1px 8px;border-radius:6px;border:1px solid #2a3956;color:#9fb0c9}
+.k-chip.a{color:#ffb547;border-color:rgba(255,181,71,.55);background:rgba(255,181,71,.08)}
+.k-chip.r{color:#ff6b78;border-color:rgba(255,93,108,.6);background:rgba(255,93,108,.12)}
+.k-pm{flex:none;display:flex;gap:6px}
+.d5 .k-pm button{width:44px;height:44px;border-radius:10px;border:1px solid #2a3956;color:#3ef2b4;font-size:24px;background:#0e1729}
+.k-row.low{border-color:#ff5d6c;box-shadow:0 0 0 1px rgba(255,93,108,.5),0 0 22px rgba(255,93,108,.3)}
+.k-row.low .k-n{color:#ff5d6c;text-shadow:0 0 12px rgba(255,93,108,.9)}
+.k-row.low .k-bar{background:rgba(255,93,108,.22)}
+.k-row.low .k-bar i{background:#ff5d6c;box-shadow:0 0 10px #ff5d6c}
+.k-rings{display:grid;grid-template-columns:repeat(4,1fr);gap:12px 6px;background:#121c2e;border:1px solid #1f2b44;border-radius:14px;padding:12px 6px;margin-bottom:6px}
+.k-ring{text-align:center;min-width:0}
+.k-dial{width:62px;height:62px;margin:0 auto 5px;border-radius:50%;background:conic-gradient(#3ef2b4 calc(var(--p) * 1%),#24314d 0);display:grid;place-items:center;box-shadow:0 0 14px rgba(62,242,180,.16)}
+.k-dial b{width:48px;height:48px;border-radius:50%;background:#121c2e;display:grid;place-items:center;font-size:19px;font-weight:700}
+.k-rn{font-size:16px;line-height:1.2;color:#c3cfe0;overflow-wrap:anywhere}
+.k-proc{display:block;font-size:16px;color:#7cc4ff}
+.k-nav{position:sticky;bottom:0;z-index:6;display:grid;grid-template-columns:repeat(4,1fr);background:#0b1220;border-top:1px solid #1f2b44;margin:14px -12px 0;padding:4px 0 6px}
+.d5 .k-nav button{min-height:58px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:#6f819e;font-size:16px}
+.k-nav svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.d5 .k-nav .on{color:#3ef2b4;text-shadow:0 0 10px rgba(62,242,180,.6)}
+.d5 .k-nav .on svg{filter:drop-shadow(0 0 5px rgba(62,242,180,.7))}
 
-/* ===== 6. פסטל חם ===== */
-.s6 .app{background:#fbf2e4;font-family:"Varela Round","Assistant",Arial,sans-serif;color:#4a2e20}
-.s6 .app-title{font-size:32px;color:#b5532d;font-weight:700}
-.s6 .tab{background:#f6e1cf;color:#8a4a2c;border-radius:999px;font-weight:700}
-.s6 .tab.on{background:#e9825b;color:#fff}
-.s6 .tbl-h{color:#b5532d;font-size:23px}
-.s6 .tbl-body{background:#fffaf3;border:1.5px solid #f1d9c2;border-radius:24px;overflow:hidden;padding:4px 0}
-.s6 .row{border-bottom:1.5px dashed #f0dac6}
-.s6 .row:last-child{border-bottom:0}
-.s6 .hdr{color:#ad7656}
-.s6 .n{color:#4a2e20}
-.s6 .pm{background:#fde3d3;color:#b5532d}
-.s6 .pm.plus{background:#f19f7c;color:#fff}
-.s6 .low{background:#fde6dc}
-.s6 .low .n{color:#fff;background:#c75b39;border-radius:12px}
-.s6 .c-miss.has{color:#c0532c}
+/* ===== 6 · Kiosk ===== */
+.d6{font-family:Alef,Arial,"Liberation Sans","Noto Sans Hebrew",sans-serif;background:#fff;color:#000;padding:0 0 20px}
+.q-top{background:#000;color:#ffd400;display:flex;justify-content:space-between;align-items:center;padding:8px 14px;min-height:64px}
+.q-title{font-size:36px;font-weight:700;line-height:1}
+.q-clock{font-size:22px;color:#fff;font-weight:700}
+.q-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;background:#000;padding:0 0 3px}
+.d6 .q-tabs button{min-height:56px;background:#fff;color:#000;font-size:18px;font-weight:700}
+.d6 .q-tabs .on{background:#ffd400}
+.q-sum{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:10px}
+.q-sum div{border:3px solid #000;padding:6px 4px;text-align:center;font-size:17px;font-weight:700;line-height:1.15}
+.q-sum b{display:block;font-size:32px}
+.q-sum .g{background:#c9f5d5}.q-sum .y{background:#ffd400}.q-sum .r{background:#d40000;color:#fff}
+.q-h{background:#000;color:#fff;font-size:24px;font-weight:700;padding:8px 14px;margin:4px 0 10px}
+.q-row{display:flex;align-items:stretch;border:3px solid #000;margin:0 10px 8px;min-height:100px;background:#fff}
+.q-info{flex:1;min-width:0;padding:8px 10px;display:flex;flex-direction:column;justify-content:center;gap:6px}
+.q-name{font-size:24px;font-weight:700;line-height:1.15}
+.q-tags{display:flex;flex-wrap:wrap;gap:4px}
+.q-tag{font-size:17px;font-weight:700;padding:2px 7px;border:2px solid #000;line-height:1.25;background:#fff;color:#000}
+.q-tag.y{background:#ffd400}.q-tag.r{background:#d40000;color:#fff}
+.q-n,.q-sum b,.q-clock{font-family:Heebo,Arial,"Liberation Sans",sans-serif;font-weight:800}
+.q-n{flex:none;width:82px;display:flex;align-items:center;justify-content:center;font-size:56px;font-weight:700;line-height:1;border-right:3px solid #000;background:#c9f5d5;font-variant-numeric:tabular-nums;letter-spacing:-1px}
+.d6 .q-btn{flex:none;width:58px;display:flex;align-items:center;justify-content:center;font-size:42px;font-weight:700;background:#000;color:#ffd400}
+.d6 .q-btn+.q-btn{border-right:3px solid #ffd400}
+.q-row.low{background:#000;color:#ffd400}
+.q-row.low .q-n{background:#ffd400;color:#000;border-color:#ffd400}
+.d6 .q-row.low .q-btn{background:#ffd400;color:#000;border-right:3px solid #000}
+.q-row.low .q-tag.lo{background:#ffd400;border-color:#ffd400;color:#000;font-size:19px}
+.q-row.sm{min-height:72px}
+.q-row.sm .q-name{font-size:22px}
+.q-row.sm .q-n{font-size:44px;width:92px;background:#fff}
 
-/* ===== 7. מחברת חשבונות ===== */
-.s7 .app{background-color:#f7efd9;background-image:linear-gradient(90deg,transparent calc(100% - 13px),#d9534f calc(100% - 13px),#d9534f calc(100% - 11.5px),transparent calc(100% - 11.5px),transparent calc(100% - 9px),#d9534f calc(100% - 9px),#d9534f calc(100% - 7.5px),transparent calc(100% - 7.5px));font-family:"Frank Ruhl Libre","David Libre",David,"Times New Roman",serif;color:#1f1d33;padding-right:22px}
-.s7 .app-title{font-size:34px;font-weight:900;border-bottom:3px double #6b4f2a;display:inline-block;padding-bottom:2px}
-.s7 .tabs{gap:4px;border-bottom:1.5px solid #8a6d45;align-items:flex-end}
-.s7 .tab{flex:none;padding:7px 20px;background:#e7dcc0;color:#6b4f2a;border:1.5px solid #8a6d45;border-bottom:0;border-radius:8px 8px 0 0;font-weight:700}
-.s7 .tab.on{background:#f7efd9;color:#1f1d33;margin-bottom:-1.5px;padding-bottom:9px}
-.s7 .tbl-h{font-size:25px;font-weight:900;color:#3b2a14}
-.s7 .row{border-bottom:1px solid #a7bfdc;padding:6px 2px;min-height:44px}
-.s7 .hdr{border-bottom:3px double #6b4f2a;color:#6b4f2a}
-.s7 .c-name{font-weight:500;font-size:18px}
-.s7 .n{font-weight:700;font-size:25px;color:#1f1d33}
-.s7 .c-half{font-weight:500;color:#3b3a55}
-.s7 .c-half.e::after{content:"\2014";color:#c2b38f}
-.s7 .pm{border-radius:3px;border:1.5px solid #6b4f2a;color:#6b4f2a;background:#fbf6e8;width:27px;height:27px;font-size:19px;font-family:Arial,sans-serif;font-weight:400}
-.s7 .low .n{color:#b3201c;text-decoration:underline double #b3201c;text-underline-offset:3px}
-.s7 .low .c-name{color:#b3201c}
-.s7 .c-miss.has{color:#b3201c;font-style:italic;font-size:17px}
+/* ===== 7 · Cork board ===== */
+.d7{font-family:Caveat,"Gveret Levin","Comic Sans MS","Segoe Print","Bradley Hand",cursive,sans-serif;color:#2a2018;background-color:#c29262;background-image:radial-gradient(rgba(92,58,24,.38) 1px,transparent 1.7px),radial-gradient(rgba(255,236,200,.3) 1px,transparent 1.6px),radial-gradient(rgba(120,80,40,.25) 2px,transparent 2.8px);background-size:7px 7px,11px 11px,23px 23px;background-position:0 0,3px 5px,9px 2px;border:10px solid #7a5230;box-shadow:inset 0 0 18px rgba(60,35,10,.45);padding:16px 10px 26px;overflow:hidden}
+.n-head{position:relative;background:#fffdf6;margin:6px 34px 16px;padding:16px 12px 10px;text-align:center;box-shadow:0 7px 12px -4px rgba(0,0,0,.4);transform:rotate(-1.4deg)}
+.n-head h2{font-size:48px;margin:0;line-height:1;font-weight:400}
+.n-head p{margin:4px 0 0;font-size:20px}
+.pin{position:absolute;top:-7px;left:50%;width:20px;height:20px;margin-left:-10px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#ff8a80,#d32f2f 55%,#7f1717);box-shadow:0 3px 4px rgba(0,0,0,.45);z-index:1}
+.pin.p-b{background:radial-gradient(circle at 35% 35%,#90caf9,#1e63c4 55%,#0d2f66)}
+.pin.p-g{background:radial-gradient(circle at 35% 35%,#a5e3a9,#2e8b3a 55%,#145a1d)}
+.pin.p-y{background:radial-gradient(circle at 35% 35%,#fff59d,#e6b800 55%,#8a6d00)}
+.n-tabs{display:flex;flex-wrap:wrap;gap:8px 4px;justify-content:center;margin:0 0 20px}
+.d7 .n-tabs button{min-height:46px;padding:0 7px;background:rgba(244,233,203,.95);font-size:19px;box-shadow:0 2px 3px rgba(0,0,0,.25);clip-path:polygon(4% 0,96% 5%,100% 50%,95% 100%,3% 95%,0 50%);transform:rotate(-2deg)}
+.d7 .n-tabs button:nth-child(even){transform:rotate(1.6deg)}
+.d7 .n-tabs .on{background:#fff;text-decoration:underline wavy #d32f2f;text-underline-offset:7px}
+.n-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px 12px;padding:0 4px}
+.n-note{position:relative;padding:20px 8px 10px;min-height:156px;box-shadow:0 10px 12px -8px rgba(0,0,0,.55),0 1px 3px rgba(0,0,0,.2);transform:rotate(var(--r));display:flex;flex-direction:column;align-items:center;text-align:center;min-width:0}
+.n-name{font-size:24px;line-height:1.1}
+.n-n{position:relative;font-family:Caveat,"Gveret Levin",cursive,sans-serif;font-weight:700;font-size:64px;line-height:.95;margin:2px 0 0;color:#1d6b34}
+.n-note.low .n-n{color:#c62828}
+.n-note.low .n-n::after{content:"";position:absolute;top:-6px;bottom:-4px;left:-16px;right:-16px;border:3px solid #c62828;border-radius:50% 45% 52% 48%/55% 50% 45% 50%;transform:rotate(-7deg)}
+.n-scrib{font-size:22px;color:#c62828;margin-top:4px}
+.n-y{display:inline-block;background:#ffe14d;padding:1px 8px;font-size:20px;box-shadow:0 1px 2px rgba(0,0,0,.3);transform:rotate(-2deg);margin:3px 0}
+.n-r{color:#c62828;font-size:20px;line-height:1.15}
+.n-h{font-size:20px;color:#4b3b2a;line-height:1.15}
+.n-pm{display:flex;gap:12px;margin-top:auto;padding-top:8px}
+.d7 .n-pm button{width:44px;height:44px;border-radius:50%;background:#fffdf6;box-shadow:0 2px 4px rgba(0,0,0,.35);font-size:28px}
+.n-lbl{display:table;margin:28px auto 14px;background:rgba(244,233,203,.95);padding:4px 18px;font-size:28px;box-shadow:0 2px 3px rgba(0,0,0,.25);transform:rotate(1.5deg)}
+.n-tags{display:flex;flex-wrap:wrap;gap:14px 10px;justify-content:center}
+.n-tag{position:relative;display:flex;align-items:center;gap:6px;min-height:46px;padding:6px 16px 6px 28px;background:#ead4a6;font-size:21px;line-height:1.1;filter:drop-shadow(0 3px 3px rgba(0,0,0,.3));clip-path:polygon(0 50%,16px 0,100% 0,97% 14%,100% 28%,96% 42%,100% 56%,97% 70%,100% 84%,96% 100%,16px 100%);transform:rotate(var(--r))}
+.n-tag::before{content:"";position:absolute;left:12px;top:50%;width:8px;height:8px;margin-top:-4px;border-radius:50%;background:#c29262;box-shadow:inset 0 1px 2px rgba(0,0,0,.5)}
+.n-tag b{font-family:Caveat,"Gveret Levin",cursive,sans-serif;font-size:30px;font-weight:700;color:#1d6b34}
+.n-tag i{font-style:normal;font-size:19px;color:#1e5bb8}
 
-/* ===== 8. בוטני יוקרתי ===== */
-.s8 .app{background:#f5efe1;font-family:"Heebo","Assistant",Arial,sans-serif;color:#1e3a2a;padding-top:0}
-.s8 .app-head{background:#1e3a2a;color:#f3ead3;margin:0 -10px;padding:20px 14px 0;border-bottom:3px solid #c2a25a}
-.s8 .app-title{font-family:"Bellefair","Frank Ruhl Libre",serif;font-size:38px;font-weight:400;color:#f3ead3;display:flex;align-items:center;gap:10px}
-.s8 .app-title::before,.s8 .tbl-h::before{content:"";flex:none;width:28px;height:28px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 21C3 10 10 3 21 3c0 11-7 18-18 18z' fill='%23c2a25a'/%3E%3Cpath d='M3.5 20.5L15 9' stroke='%231e3a2a' stroke-width='1.4' fill='none'/%3E%3C/svg%3E") center/contain no-repeat}
-.s8 .tabs{gap:26px;justify-content:flex-start}
-.s8 .tab{flex:none;color:rgba(243,234,211,.62);border-radius:0;padding:8px 2px 10px;font-weight:500;letter-spacing:.5px;border-bottom:4px solid transparent}
-.s8 .tab.on{color:#ecd595;border-bottom-color:#ecd595}
-.s8 .tbl-h{font-family:"Bellefair","Frank Ruhl Libre",serif;font-weight:400;font-size:29px;display:flex;align-items:center;gap:8px}
-.s8 .tbl-h::before{width:22px;height:22px}
-.s8 .tbl-h::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,#c2a25a)}
-.s8 .tbl-body{background:#fbf8ef;border:1px solid #e0d3b0;border-radius:6px;overflow:hidden}
-.s8 .row{border-bottom:1px solid #ece2c8}
-.s8 .row:last-child{border-bottom:0}
-.s8 .hdr{color:#8a7340;letter-spacing:.3px}
-.s8 .hdr,.s8 .hdr .c-half,.s8 .hdr .c-miss{font-weight:500}
-.s8 .c-name{font-weight:500}
-.s8 .n{font-weight:600;color:#1e3a2a}
-.s8 .c-half{font-weight:400}
-.s8 .pm{border:1.5px solid #c2a25a;color:#1e3a2a;background:transparent;font-weight:400}
-.s8 .low{background:#f3e3d1}
-.s8 .low .n,.s8 .low .c-name{color:#a33a22}
-.s8 .c-miss.has{color:#a33a22;font-weight:600}
+/* ===== 8 · Pastel accordion ===== */
+.d8{font-family:"Varela Round",Assistant,Arial,"Liberation Sans",sans-serif;background:#fffaf4;color:#2b2a33;padding:16px 12px 26px}
+.a-hi{font-size:16px;color:#8b8597}
+.a-title{font-size:30px;margin:0 0 12px;line-height:1.15;font-weight:400}
+.a-tabs{display:flex;background:#f1ecfa;border-radius:999px;padding:4px;margin-bottom:16px}
+.d8 .a-tabs button{flex:1 1 0;min-height:44px;border-radius:999px;font-size:16px;color:#6b6478}
+.d8 .a-tabs .on{background:#fff;color:#2b2a33;box-shadow:0 2px 8px rgba(80,60,140,.16)}
+.a-sec{border-radius:22px;margin-bottom:10px;background:var(--bg)}
+.d8 .a-hd{width:100%;display:flex;align-items:center;gap:8px;min-height:66px;padding:10px 14px;text-align:right;border-radius:22px}
+.a-t{font-size:21px;flex:none}
+.a-pills{flex:1;display:flex;flex-wrap:wrap;gap:5px;justify-content:flex-start;min-width:0}
+.d8 .pill{font-size:16px;line-height:1.25;padding:3px 10px;border-radius:999px;background:rgba(255,255,255,.8);color:#4a4556;white-space:nowrap}
+.d8 .pill.g{background:#d4f4e1;color:#14744a}
+.d8 .pill.y{background:#ffe680;color:#634b00}
+.d8 .pill.r{background:#ffd8d4;color:#b42318}
+.a-chev{flex:none;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.85);display:grid;place-items:center}
+.a-chev::before{content:"";width:9px;height:9px;border-right:2.5px solid #4a4556;border-bottom:2.5px solid #4a4556;transform:translateY(-2px) rotate(45deg)}
+.a-sec.open .a-chev::before{transform:translateY(2px) rotate(-135deg)}
+.a-body{padding:0 8px 8px}
+.a-row{display:flex;align-items:center;gap:8px;background:#fff;border-radius:16px;padding:8px 8px 8px 6px;margin-bottom:6px;min-height:62px}
+.a-row .nm{flex:1;min-width:0;font-size:18px;line-height:1.25}
+.a-row .chips{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+.a-step{flex:none;display:flex;align-items:center;background:var(--bg);border-radius:999px}
+.d8 .a-step button{width:44px;height:44px;border-radius:50%;font-size:23px;color:var(--ac)}
+.a-step b{min-width:28px;text-align:center;font-size:21px;font-weight:400;font-variant-numeric:tabular-nums}
+.a-row.low{background:#fff0ee;box-shadow:inset 0 0 0 2px #ffb3aa}
+.a-row.low .a-step b{color:#c4321c}
 
-/* ===== 9. רמזור ===== */
-.s9{--wnum:106px}
-.s9 .app{background:#fff;font-family:"Assistant","Heebo",Arial,sans-serif;color:#222}
-.s9 .app-title{font-size:32px;font-weight:800}
-.s9 .tabs{border-bottom:2px solid #e6e6e6;gap:0}
-.s9 .tab{border-radius:0;color:#777;padding:10px 0;border-bottom:4px solid transparent;margin-bottom:-2px}
-.s9 .tab.on{color:#111;border-bottom-color:#111}
-.s9 .legend{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:12px;font-size:16px;font-weight:600;color:#444}
-.s9 .legend i{display:inline-block;width:15px;height:15px;border-radius:50%;vertical-align:-2px;margin-left:5px}
-.s9 .tbl-body{border-top:1px solid #eee}
-.s9 .row{border-bottom:1px solid #eee}
-.s9 .hdr{color:#888}
-.s9 .n{color:#fff;border-radius:10px;min-width:40px;height:34px;line-height:34px;padding:0 4px;font-size:22px}
-.dot-g,.s9 .t-g .n{background:#2b8a3e}
-.dot-o,.s9 .t-o .n{background:#e8590c}
-.dot-r,.s9 .t-r .n{background:#d0312d}
-.s9 .low .n{box-shadow:0 0 0 3px #fff,0 0 0 5px currentColor}
-.s9 .t-o.low .n{color:#fff;box-shadow:0 0 0 3px #fff,0 0 0 5px #e8590c}
-.s9 .t-r.low .n{box-shadow:0 0 0 3px #fff,0 0 0 5px #d0312d}
-.s9 .pm{border:1.5px solid #d3d3d3;color:#555;background:#fff;width:28px;height:28px}
-.s9 .c-half{color:#666}
-.s9 .c-miss.has{color:#d0312d}
-.s9 .t-r .c-name{color:#d0312d;font-weight:700}
+/* ===== 9 · Recipe book ===== */
+.d9{font-family:"David Libre","Frank Ruhl Libre",Georgia,"Liberation Serif",serif;background:#fbf3e3;color:#3b2a1e;padding:0 0 26px}
+.r-tabs{display:flex;gap:4px;padding:12px 10px 0;background:#e6d6b8}
+.d9 .r-tabs button{flex:1 1 0;min-height:46px;border-radius:14px 14px 0 0;background:var(--c);font-family:"Suez One",Georgia,serif;font-size:16px;color:#3b2a1e}
+.d9 .r-tabs .on{background:#fbf3e3}
+.r-cover{text-align:center;padding:18px 16px 2px}
+.r-cover small{font-size:16px;letter-spacing:1px;color:#9a6b3f}
+.r-cover h2{font-family:"Suez One",Georgia,serif;font-weight:400;font-size:32px;line-height:1.15;margin:4px 0;color:#7a2e1c}
+.r-cover p{margin:0;font-size:19px}
+.r-div{display:block;margin:10px auto 0;width:230px;max-width:100%;height:26px}
+.r-chap{display:flex;align-items:center;gap:10px;margin:20px 14px 12px}
+.r-chap h3{font-family:"Suez One",Georgia,serif;font-weight:400;font-size:24px;margin:0;color:#7a2e1c;white-space:nowrap}
+.r-chap::before,.r-chap::after{content:"";flex:1;border-top:2px dashed #cdae84}
+.r-card{position:relative;display:flex;gap:10px;align-items:center;background:#fffaf0;border:1px solid #e6d3b3;border-radius:16px;margin:0 12px 10px;padding:10px;box-shadow:0 3px 0 #ecdcbf}
+.r-emo{flex:none;width:58px;height:58px;border-radius:50%;background:#fff;border:2px dashed #d9b98f;display:grid;place-items:center;font-size:30px}
+.r-txt{flex:1;min-width:0}
+.r-name{font-family:"Suez One",Georgia,serif;font-size:21px;line-height:1.2}
+.r-ing{font-size:17px;line-height:1.35;margin-top:3px}
+.r-ing span{display:inline-block;margin-left:6px}
+.r-ing .y{background:#ffe27a;border-radius:4px;padding:0 5px}
+.r-ing .r{color:#b8321f;font-weight:700}
+.r-ing .h{color:#7d6650}
+.r-ing .ok{color:#2f7d4a}
+.r-side{flex:none;display:flex;flex-direction:column;align-items:center;gap:6px}
+.r-stamp{--ink:#2f7d4a;width:62px;height:62px;border-radius:50%;border:3px double var(--ink);color:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;transform:rotate(-8deg);font-family:"David Libre",Georgia,serif;font-weight:700;font-size:28px;line-height:1;background:rgba(255,255,255,.5)}
+.r-stamp small{font-family:"David Libre",Georgia,serif;font-size:16px;font-weight:700;margin-top:1px}
+.r-card.low{background:#fff4ef;border-color:#f0c2b5}
+.r-card.low .r-stamp{--ink:#c0392b;transform:rotate(7deg);background:rgba(255,220,210,.5)}
+.r-pm{display:flex;gap:4px}
+.d9 .r-pm button{width:44px;height:44px;border-radius:12px;background:#f3e6cf;font-size:25px;color:#7a2e1c}
+.r-jars{display:grid;grid-template-columns:repeat(3,1fr);gap:16px 10px;margin:0 14px}
+.r-jar{text-align:center;min-width:0}
+.r-lid{height:13px;margin:0 16px;border-radius:5px 5px 2px 2px;background:#8a5a3c}
+.r-body{border:2px solid #d9c3a0;border-top:0;border-radius:6px 6px 20px 20px;background:linear-gradient(#ffffff,#fdf3df);padding:8px 5px 10px;min-height:96px;display:flex;flex-direction:column;justify-content:center}
+.r-lbl{background:#fffaf0;border:1px dashed #c9a77c;border-radius:6px;padding:4px 2px;font-size:16px;line-height:1.15;overflow-wrap:anywhere}
+.r-lbl b{display:block;font-family:"David Libre",Georgia,serif;font-weight:700;font-size:27px;color:#2f7d4a}
+.r-proc{font-size:16px;color:#1e5bb8;background:#e3eefc;border-radius:4px;margin-top:5px;padding:0 3px}
 
-/* ===== 10. ענק וברור ===== */
-.s10{--wnum:auto}
-.s10 .app{background:#fff;color:#000;font-family:"Assistant","Heebo",Arial,sans-serif;font-size:22px;padding:18px 10px 26px}
-.s10 .app-title{font-size:42px;font-weight:800}
-.s10 .tab{font-size:25px;font-weight:800;border:3px solid #000;border-radius:14px;padding:12px 0;color:#000}
-.s10 .tab.on{background:#000;color:#fff}
-.s10 .tbl-h{font-size:30px;font-weight:800;background:#000;color:#fff;padding:6px 14px;border-radius:10px}
-.s10 .shakes .row,.s10 .spices .row{grid-template-columns:auto minmax(0,1fr) auto;grid-template-areas:"name name num" "half miss miss";border-bottom:2px solid #000;padding:12px 2px;column-gap:8px}
-.s10 .c-name{grid-area:name;font-size:25px;font-weight:800;line-height:1.2}
-.s10 .c-num{grid-area:num;gap:6px}
-.s10 .c-half{grid-area:half}
-.s10 .c-miss{grid-area:miss}
-.s10 .c-half,.s10 .c-miss{font-size:22px;font-weight:700;text-align:right;margin-top:8px}
-.s10 .c-miss{color:#c00000}
-.s10 .lbl{display:inline}
-.s10 .e{display:none}
-.s10 .pm{width:52px;height:52px;border-radius:12px;border:3px solid #000;font-size:34px;font-weight:800;color:#000;background:#fff;font-family:Arial,sans-serif}
-.s10 .pm.plus{background:#000;color:#fff}
-.s10 .n{font-size:40px;font-weight:800;min-width:58px;line-height:1.2}
-.s10 .low .n{background:#c00000;color:#fff;border-radius:10px}
-.s10 .low .c-name{color:#c00000}
-.s10 .hdr{font-size:20px;color:#000;border-bottom:3px solid #000;padding-top:8px;padding-bottom:8px}
-.s10 .hdr .c-half,.s10 .hdr .c-miss{display:none}
-.s10 .hdr .c-num{min-width:174px}
+/* ===== 10 · Swiss typographic ===== */
+.d10{font-family:"Miriam Libre","Noto Sans Hebrew",Arial,"Liberation Sans",sans-serif;background:#fff;color:#000;padding:14px 14px 30px}
+.s-disp{font-family:Karantina,"Liberation Sans Narrow","Arial Narrow",Arial,sans-serif;font-weight:700}
+.s-meta{display:flex;justify-content:space-between;font-size:16px;border-bottom:1px solid #e30613;padding-bottom:6px}
+.s-title{font-size:124px;line-height:.8;margin:16px 0 4px;letter-spacing:-1px}
+.s-tabs{display:flex;gap:16px;margin:0 0 6px}
+.d10 .s-tabs button{min-height:44px;font-size:17px;color:#555;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:8px}
+.d10 .s-tabs .on{color:#000;font-weight:700;text-decoration-thickness:3px}
+.s-legend{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:16px;margin:0 0 14px}
+.s-sq{display:inline-block;width:11px;height:11px;margin-left:6px;vertical-align:0;background:#00a650}
+.s-sq.y{background:#ffcc00}.s-sq.r{background:#e30613}.s-sq.k{background:#000}
+.s-sum{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #e30613;border-bottom:1px solid #e30613;margin-bottom:24px}
+.s-sum div{padding:8px 0 6px;min-width:0}
+.s-sum div+div{border-right:1px solid #e30613;padding-right:8px}
+.s-sum b{display:block;font-size:66px;line-height:.85}
+.s-sum span{font-size:16px}
+.s-sum .lo b{color:#e30613}
+.s-label{display:flex;justify-content:space-between;align-items:baseline;border-top:3px solid #000;padding-top:6px}
+.s-label h3{font-size:20px;margin:0;font-weight:700}
+.s-label span{font-size:16px}
+.s-grid{display:grid;grid-template-columns:repeat(3,1fr);column-gap:10px}
+.s-cell{border-top:1px solid #e30613;padding:8px 0 12px;min-width:0;display:flex;flex-direction:column}
+.s-idx{font-size:16px;display:flex;justify-content:space-between;align-items:center}
+.s-idx .s-sq{margin:0}
+.s-n{font-size:76px;line-height:.82;margin:8px 0 6px;font-variant-numeric:tabular-nums}
+.s-nm{font-size:16px;font-weight:700;line-height:1.2}
+.s-st{font-size:16px;line-height:1.25;margin-top:3px}
+.s-st.r{color:#e30613}
+.s-pm{display:flex;gap:6px;margin-top:auto;padding-top:10px}
+.d10 .s-pm button{width:44px;height:44px;border:1px solid #000;font-size:22px}
+.s-cell.low .s-n{color:#e30613}
+.s-tgrid{display:grid;grid-template-columns:repeat(4,1fr);column-gap:8px}
+.s-tc{border-top:1px solid #e30613;padding:6px 0 12px;min-width:0}
+.s-tc b{display:block;font-size:54px;line-height:.85;margin:4px 0}
+.s-tc span{display:block;font-size:16px;line-height:1.2;overflow-wrap:anywhere}
+.s-tc em{display:block;font-style:normal;font-size:16px;margin-top:2px}
+.s-foot{margin-top:18px;border-top:3px solid #000;padding-top:6px;font-size:16px;display:flex;justify-content:space-between}
 </style>
 </head>
 <body>
-
-<div id="gallery" class="page">
-  <h1>מאסטר שייק — באיזה סגנון תרצי את האפליקציה?</h1>
-  <p class="sub">גללי, ותגידי לתומר את המספר שאת הכי אוהבת</p>
-  <p class="hint">לחיצה על סגנון פותחת אותו בגודל מלא, כמו שהוא ייראה בטלפון.</p>
+<main id="gallery" class="g-main">
+  <h1>מאסטר שייק — 10 כיוונים שונים לגמרי</h1>
+  <p class="g-lead">גללי, לחצי על כרטיס לראות במסך מלא, ותגידי לתומר מספר</p>
+  <a class="g-prev" href="v1.html">הגלריה הקודמת</a>
   <div id="cards"></div>
-  <p class="outro">זהו, אלה כל ה־10. איזה מספר הכי אהבת? תגידי לתומר.</p>
-</div>
-
-<div id="full" hidden></div>
-
+  <p class="g-outro">איזה מספר הכי מתאים לך? תגידי לתומר.</p>
+</main>
+<section id="full" hidden>
+  <header class="f-bar"><button type="button" class="f-back" data-back>חזרה</button><div class="f-title" id="ftitle"></div></header>
+  <div class="f-body" id="fbody"></div>
+  <div class="f-end" id="fend"></div>
+</section>
 <script>
-var STYLES = [
-  ["לבן נקי + ירוק טרי", "נקי ומסודר, כמו אפליקציה של סופר טוב."],
-  ["בר שייקים צבעוני", "כל שייק בצבע של הפרי שלו — צבעוני, אבל מסודר."],
-  ["אייפון קלאסי", "נראה כמו ההגדרות באייפון — מוכר מהיום הראשון."],
-  ["הלוח המחיק שלך", "בדיוק כמו הלוח במטבח, רק בטלפון. אין מה ללמוד."],
-  ["שמיים ושמש", "תכלת וצהוב, שמח ובהיר — בלי להיות ילדותי."],
-  ["פסטל חם", "צבעים רכים וחמים, כמו ספר מתכונים."],
-  ["מחברת חשבונות", "דף עם שורות, כמו פנקס של העסק — רציני, אבל חם."],
-  ["בוטני יוקרתי", "ירוק כהה וזהב, כמו בוטיק בריאות יוקרתי."],
-  ["רמזור", "הצבע אומר הכל: ירוק — יש, כתום — מעט, אדום — נגמר."],
-  ["ענק וברור", "מספרים ענקיים וכפתורים גדולים — קריא בלי משקפיים."]
+"use strict";
+// ---------- the data (identical in all 10 directions) ----------
+// n name · v ready stock · w waiting for orders · h half-done · m missing · c category · e emoji
+const SH = [
+  {n:"ניקוי ירוק",v:15,c:"g",e:"🥬"},
+  {n:"ויטמין C",v:8,c:"l",e:"🍊"},
+  {n:"Green Power",v:8,h:9,c:"g",e:"🥝"},
+  {n:"Iron Man",v:5,c:"g",e:"🥦"},
+  {n:"פאטה מורינגה",v:4,w:9,h:6,m:"מורינגה",c:"g",e:"🌿"},
+  {n:"ירוק עז",v:12,c:"g",e:"🍏"},
+  {n:"מוס שוקולד",v:10,c:"c",e:"🍫"},
+  {n:"שוקו-בננה",v:1,c:"c",e:"🍌"},
+  {n:"תות-בננה",v:5,w:10,c:"f",e:"🍓"},
+  {n:"מעדן דובדבן",v:6,c:"f",e:"🍒"},
+  {n:"מאקה",v:0,c:"m",e:"🌰"},
+  {n:"מאקה וואקה",v:10,c:"m",e:"🍯"},
+  {n:"אסאי",v:11,c:"f",e:"🍇"},
+  {n:"יער של פירות",v:0,h:10,m:"גוג'י",c:"f",e:"🫐"},
+  {n:"קופנגן לבן",v:9,c:"f",e:"🥥"},
+  {n:"טרופיקיץ",v:20,c:"f",e:"🍍"},
+  {n:"מנגו קלאסי",v:3,c:"f",e:"🥭"},
+  {n:"השייק של יוני",v:11,c:"f",e:"🥤"}
 ];
+// toppings ("תבלינים"): name · count · in process
+const TP = [["שיבולת שועל",12,0],["מורינגה",25,0],["מוס שוקולד",6,0],["שוקו-בננה",30,0],["טרופיקיץ",9,18],["מנגו",44,0],["מאקה",11,0],["מאקה וואקה",25,0]];
+const TABS = ["מלאי","הזמנות","היסטוריה","הגדרות"];
+const CATS = [["g","ירוקים"],["f","פירות"],["c","שוקולד"],["m","מאקה"],["l","לימון"]];
 
-// [name, ready, half, missing, color-key]
-var SHAKES = [
-  ["ניקוי ירוק",15,"","","g"],
-  ["ויטמין C",8,"","","o"],
-  ["Green Power",8,9,"","g"],
-  ["Iron Man",5,"","","r"],
-  ["פאטה מורינגה",4,6,"מורינגה","g"],
-  ["ירוק עז",12,"","","g"],
-  ["מוס שוקולד",10,"","","b"],
-  ["שוקו-בננה",1,"","","b"],
-  ["תות-בננה",5,"","","p"],
-  ["מעדן דובדבן",6,"","","r"],
-  ["מאקה",0,"","","t"],
-  ["מאקה וואקה",10,"","","t"],
-  ["אסאי",11,"","","v"],
-  ["יער של פירות",0,10,"גוג'י","v"],
-  ["קופנגן לבן",9,"","","c"],
-  ["טרופיקיץ",20,"","","y"],
-  ["מנגו קלאסי",3,"","","o"],
-  ["השייק של יוני",11,"","","a"]
-];
-// [name, amount, in-process, color-key]
-var SPICES = [
-  ["שיבולת שועל",12,"","t"],
-  ["מורינגה",25,"","g"],
-  ["מוס שוקולד",6,"","b"],
-  ["שוקו-בננה",30,"","b"],
-  ["טרופיקיץ",9,18,"y"],
-  ["מנגו",44,"","o"],
-  ["מאקה",11,"","t"],
-  ["מאקה וואקה",25,"","t"]
-];
+// ---------- helpers ----------
+const isLow = v => v <= 1;
+const lowWord = v => v === 0 ? "אזל" : "נשאר 1";
+const pm = (s, cls) => `<button type="button"${cls ? ` class="${cls}"` : ""} data-pm="${s}" aria-label="${s > 0 ? "הוספה" : "הפחתה"}">${s > 0 ? "+" : "−"}</button>`;
+const tabs = () => TABS.map((t, i) => `<button type="button"${i ? "" : ' class="on" aria-current="page"'}>${t}</button>`).join("");
+const emo = e => `<i class="emo" aria-hidden="true">${e}</i>`;
+function totals(s){
+  const t = {ready:0, wait:0, low:0, zero:0, one:0, orders:0, miss:0};
+  s.forEach(x => { t.ready += x.v; t.wait += x.w || 0; if (x.w) t.orders++; if (x.m) t.miss++;
+    if (isLow(x.v)) t.low++; if (x.v === 0) t.zero++; if (x.v === 1) t.one++; });
+  return t;
+}
+function summary(s){
+  const t = totals(s), p = [];
+  if (t.zero) p.push(t.zero === 1 ? "שייק אחד אזל" : `${t.zero} שייקים אזלו`);
+  if (t.one) p.push(t.zero ? (t.one === 1 ? "עוד אחד כמעט" : `עוד ${t.one} כמעט`) : (t.one === 1 ? "שייק אחד כמעט נגמר" : `${t.one} שייקים כמעט נגמרו`));
+  if (!p.length) p.push("אין שייק שנגמר");
+  return p.join(", ") + ` — ו־${t.orders} הזמנות פתוחות`;
+}
+function byCat(s, c){ return s.filter(x => x.c === c); }
 
-// state classes: low = 0 or 1 (emphasized in every style); t-g/t-o/t-r = traffic light (>=10 / 1-9 / 0)
-function lvl(v){
-  var c = v >= 10 ? "ok t-g" : (v >= 1 ? "t-o" : "t-r zero");
-  if (v <= 1) c += " low";
-  return c;
-}
-function numCell(v){
-  return '<span class="c-num"><span class="pm plus" aria-label="הוספה">+</span><span class="n">' + v +
-         '</span><span class="pm minus" aria-label="הפחתה">−</span></span>';
-}
-function sideCell(cls, label, val){
-  var empty = (val === "" || val == null);
-  return '<span class="' + cls + (empty ? ' e' : ' has') + '"><span class="lbl">' + label + ' </span>' + (empty ? '' : val) + '</span>';
-}
-function mockup(){
-  var h = '<div class="app">' +
-    '<div class="app-head"><div class="app-title">מלאי</div>' +
-    '<div class="tabs"><span class="tab on">מלאי</span><span class="tab">הזמנות</span></div>' +
-    '<div class="legend"><span><i class="dot-g"></i>יש מספיק (10 ומעלה)</span><span><i class="dot-o"></i>מעט (1 עד 9)</span><span><i class="dot-r"></i>נגמר (0)</span></div>' +
-    '</div>';
-  h += '<section class="tbl shakes"><h3 class="tbl-h">שייקים</h3><div class="tbl-body">' +
-       '<div class="row hdr"><span class="c-name">שם</span><span class="c-num">מוכנים</span><span class="c-half">בחצי</span><span class="c-miss">מה חסר</span></div>';
-  SHAKES.forEach(function(r){
-    h += '<div class="row ' + lvl(r[1]) + ' k-' + r[4] + '"><span class="c-name">' + r[0] + '</span>' + numCell(r[1]) +
-         sideCell("c-half", "בחצי:", r[2]) + sideCell("c-miss", "חסר:", r[3]) + '</div>';
+// ---------- 1 · Excel ----------
+function r1(s, o){
+  let rn = 2, rows = "";
+  s.forEach(x => {
+    const lo = isLow(x.v);
+    rows += `<tr data-i="${x.i}"><th class="x-rn">${rn++}</th><td class="x-nm${lo ? " bad" : ""}">${x.n}</td>` +
+      `<td class="x-s ${lo ? "bad" : "ok"}${x.i === 0 ? " sel" : ""}"><div class="x-step">${pm(1)}<span>${x.v}</span>${pm(-1)}</div></td>` +
+      `<td class="x-c${x.w ? " y" : ""}">${x.w || ""}</td><td class="x-c${x.m ? " r" : ""}">${x.m || ""}</td><td class="x-c">${x.h || ""}</td></tr>`;
   });
-  h += '</div></section>';
-  h += '<section class="tbl spices"><h3 class="tbl-h">תבלינים</h3><div class="tbl-body">' +
-       '<div class="row hdr"><span class="c-name">שם</span><span class="c-num">כמות</span><span class="c-half">בתהליך</span></div>';
-  SPICES.forEach(function(r){
-    h += '<div class="row ' + lvl(r[1]) + ' k-' + r[3] + '"><span class="c-name">' + r[0] + '</span>' + numCell(r[1]) +
-         sideCell("c-half", "בתהליך:", r[2]) + '</div>';
+  rows += `<tr><th class="x-rn">${rn++}</th><td class="x-nm"></td><td></td><td></td><td></td><td></td></tr>`;
+  rows += `<tr class="x-sect"><th class="x-rn">${rn++}</th><td class="x-nm">תבלינים</td><td></td><td></td><td></td><td></td></tr>`;
+  rows += `<tr class="x-hdr2"><th class="x-rn">${rn++}</th><td class="x-nm">תבלין</td><td>כמות</td><td>בתהליך</td><td></td><td></td></tr>`;
+  TP.forEach(t => { rows += `<tr><th class="x-rn">${rn++}</th><td class="x-nm">${t[0]}</td><td class="x-c x-cnt">${t[1]}</td><td class="x-c">${t[2] || ""}</td><td></td><td></td></tr>`; });
+  return `<div class="d d1${o.full ? " full" : ""}">
+<div class="x-top"><span class="x-file"><i class="x-ico" aria-hidden="true">X</i>מלאי שייקים</span><span class="x-saved">נשמר ✓</span></div>
+<div class="x-fx"><span class="x-ref">C2</span><span class="x-f">fx</span><span class="x-val">${s[0].v}</span></div>
+<div class="x-sheet" data-keep><table class="x-t"><colgroup><col style="width:30px"><col style="width:122px"><col style="width:120px"><col style="width:70px"><col style="width:90px"><col style="width:56px"></colgroup>
+<thead><tr><th class="x-rn">1</th><th class="x-nm">שייק</th><th class="g">מוכנים</th><th class="y">מחכים</th><th class="r">חסר</th><th>בחצי</th></tr></thead>
+<tbody>${rows}</tbody></table></div>
+<div class="x-tabs">${tabs()}</div></div>`;
+}
+
+// ---------- 2 · Tiles ----------
+function r2(s){
+  const T = totals(s);
+  const chips = x => (x.w ? `<span class="chip y">מחכים ${x.w}</span>` : "") + (x.h ? `<span class="chip h">בחצי ${x.h}</span>` : "") + (x.m ? `<span class="chip r">חסר: ${x.m}</span>` : "");
+  let h = `<div class="d d2"><div class="t-head"><div class="t-title">מלאי</div><div class="t-date">היום, 08:42</div></div>
+<div class="t-tabs">${tabs()}</div><div class="t-grid">
+<div class="t t-hero"><div><div class="t-name">במקפיא עכשיו</div><div class="t-n">${T.ready}</div><div class="t-cap">שייקים מוכנים</div></div>
+<div class="t-hchips"><span class="chip y">${T.wait} מחכים להזמנות</span><span class="chip r">${T.low} במלאי נמוך</span></div></div>`;
+  s.forEach(x => {
+    const lo = isLow(x.v), c = chips(x);
+    h += `<div class="t${lo ? " low" : ""}" data-i="${x.i}"><div class="t-name">${x.n}</div><div class="t-n">${x.v}</div>` +
+      `<div class="t-cap">${lo ? lowWord(x.v) + "!" : "מוכנים"}</div>${c ? `<div class="t-chips">${c}</div>` : ""}<div class="t-pm">${pm(1)}${pm(-1)}</div></div>`;
   });
-  h += '</div></section></div>';
+  h += `</div><div class="t-sub">תבלינים</div><div class="t-grid">` +
+    TP.map(t => `<div class="t tt"><div class="t-name">${t[0]}</div><div class="t-n">${t[1]}</div>${t[2] ? `<div class="t-chips"><span class="chip b">בתהליך ${t[2]}</span></div>` : ""}</div>`).join("") +
+    `</div></div>`;
   return h;
 }
 
-var MOCK = mockup();
-var cardsHtml = "";
-STYLES.forEach(function(s, i){
-  var n = i + 1;
-  cardsHtml += '<a class="card" id="card-' + n + '" href="#style-' + n + '" data-n="' + n + '">' +
-    '<div class="card-top"><span class="badge">' + n + '</span><div><div class="cname">' + s[0] + '</div><div class="cfeel">' + s[1] + '</div></div></div>' +
-    '<div class="preview s' + n + '">' + MOCK + '</div>' +
-    '<span class="card-btn">לראות את מספר ' + n + ' בגדול</span></a>';
-});
-document.getElementById("cards").innerHTML = cardsHtml;
-
-var gallery = document.getElementById("gallery");
-var full = document.getElementById("full");
-var savedY = 0, cameFromGallery = false;
-
-document.getElementById("cards").addEventListener("click", function(e){
-  if (e.target.closest(".card")) { savedY = window.scrollY; cameFromGallery = true; }
-});
-
-function openStyle(n){
-  var s = STYLES[n - 1];
-  full.innerHTML =
-    '<div class="bar"><button type="button" class="back">→ חזרה</button><div class="bar-title">סגנון ' + n + ' · ' + s[0] + '</div></div>' +
-    '<div class="full-app s' + n + '">' + MOCK + '</div>' +
-    '<div class="endbox">אהבת את זה? תגידי לתומר:<br><b>מספר ' + n + '</b><br><button type="button" class="back">→ חזרה לכל הסגנונות</button></div>';
-  gallery.hidden = true;
-  full.hidden = false;
-  window.scrollTo(0, 0);
+// ---------- 3 · iOS ----------
+function r3(s){
+  const rows = s.map(x => {
+    const lo = isLow(x.v), sub = [];
+    if (lo) sub.push(`<span class="r">${x.v ? "נשאר אחד בלבד" : "אזל — צריך להכין"}</span>`);
+    if (x.w) sub.push(`<span class="y">מחכים להזמנה ${x.w}</span>`);
+    if (x.h) sub.push(`<span>בחצי ${x.h}</span>`);
+    if (x.m) sub.push(`<span class="r">חסר: ${x.m}</span>`);
+    return `<div class="i-row${lo ? " low" : ""}" data-i="${x.i}"><div class="i-txt"><div class="i-name">${x.n}</div>${sub.length ? `<div class="i-sub">${sub.join(" · ")}</div>` : ""}</div>` +
+      `<div class="i-step">${pm(1)}<span class="i-badge">${x.v}</span>${pm(-1)}</div><i class="i-chev" aria-hidden="true"></i></div>`;
+  }).join("");
+  const trows = TP.map(t => `<div class="i-row"><div class="i-txt"><div class="i-name">${t[0]}</div>${t[2] ? `<div class="i-sub"><span class="b">בתהליך ${t[2]}</span></div>` : ""}</div><span class="i-badge gr">${t[1]}</span><i class="i-chev" aria-hidden="true"></i></div>`).join("");
+  return `<div class="d d3"><div class="i-nav"><button type="button">עריכה</button><button type="button" class="i-plus" aria-label="הוספה">+</button></div>
+<div class="i-title">מלאי</div><div class="i-seg">${tabs()}</div>
+<div class="i-search"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="#8a8a8e" stroke-width="2.2"/><path d="M15.5 15.5L21 21" stroke="#8a8a8e" stroke-width="2.2" stroke-linecap="round"/></svg>חיפוש</div>
+<div class="i-sh"><span>שייקים</span><span>${s.length} סוגים</span></div><div class="i-grp">${rows}</div>
+<div class="i-sh"><span>תבלינים</span><span>${TP.length} סוגים</span></div><div class="i-grp">${trows}</div>
+<div class="i-foot">ירוק = מוכנים · צהוב = מחכים · אדום = חסר</div></div>`;
 }
-function closeStyle(){
-  if (full.hidden) return;
-  full.hidden = true;
-  full.innerHTML = "";
-  gallery.hidden = false;
-  cameFromGallery = false;
-  window.scrollTo(0, savedY);
+
+// ---------- 4 · Magazine ----------
+function r4(s){
+  const lows = s.filter(x => isLow(x.v)), waits = s.filter(x => x.w);
+  const rows = s.map(x => {
+    const lo = isLow(x.v), nt = [];
+    if (lo) nt.push(`<span class="r">${lowWord(x.v)}</span>`);
+    if (x.w) nt.push(`<span class="hl">מחכים ${x.w}</span>`);
+    if (x.h) nt.push(`בחצי ${x.h}`);
+    if (x.m) nt.push(`<span class="r">חסר ${x.m}</span>`);
+    return `<div class="m-row${lo ? " low" : ""}" data-i="${x.i}"><div class="m-nm"><div class="m-t">${x.n}</div>${nt.length ? `<div class="m-note">${nt.join(" · ")}</div>` : ""}</div>` +
+      `<span class="m-lead"></span><span class="m-n">${x.v}</span><span class="m-pm">${pm(1)}${pm(-1)}</span></div>`;
+  }).join("");
+  return `<div class="d d4"><div class="m-mast"><div class="m-brand">מאסטר שייק</div><div class="m-issue">גיליון המלאי היומי</div></div>
+<div class="m-nav">${tabs()}</div>
+<div class="m-kick">המקפיא · עדכון בוקר</div><div class="m-hl">היום</div><p class="m-deck">${summary(s)}.</p>
+<div class="m-split"><div class="m-col r"><h4>אזלו מהמקפיא</h4>${lows.map(x => `<p><span class="big">${x.v}</span>${x.n}</p>`).join("") || "<p>אין</p>"}</div>
+<div class="m-col"><h4>מחכים להזמנות</h4>${waits.map(x => `<p><span class="big">${x.w}</span><span class="hl">${x.n}</span></p>`).join("")}</div></div>
+<div class="m-sec"><h3>המלאי המלא</h3><span>${s.length} שייקים</span></div>${rows}
+<div class="m-box"><h3>תבלינים</h3><div class="m-tg">${TP.map(t => `<div class="m-tr"><span>${t[0]}${t[2] ? `<em>בתהליך ${t[2]}</em>` : ""}</span><b>${t[1]}</b></div>`).join("")}</div></div>
+<div class="m-end">— סוף הגיליון —</div></div>`;
+}
+
+// ---------- 5 · Dark dashboard ----------
+const ICONS = [
+  '<path d="M3 7.5l9-4.5 9 4.5v9l-9 4.5-9-4.5z"/><path d="M3 7.5l9 4.5 9-4.5M12 12v9"/>',
+  '<path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/>',
+  '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  '<path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/>'
+];
+function r5(s, o){
+  const T = totals(s);
+  const rows = s.map(x => {
+    const lo = isLow(x.v), m = [];
+    if (lo) m.push(`<span class="k-chip r">${lowWord(x.v)}</span>`);
+    if (x.w) m.push(`<span class="k-chip a">מחכים ${x.w}</span>`);
+    if (x.h) m.push(`<span class="k-chip">בחצי ${x.h}</span>`);
+    if (x.m) m.push(`<span class="k-chip r">חסר ${x.m}</span>`);
+    return `<div class="k-row${lo ? " low" : ""}" data-i="${x.i}" style="--v:${Math.min(x.v, 20)};--w:${Math.min(x.w || 0, 20)}"><div class="k-main">` +
+      `<div class="k-top"><span class="k-name">${x.n}</span><span class="k-n">${x.v}<small>/20</small></span></div>` +
+      `<div class="k-bar"><i></i>${x.w ? "<u></u>" : ""}</div>${m.length ? `<div class="k-meta">${m.join("")}</div>` : ""}</div>` +
+      `<div class="k-pm">${pm(1)}${pm(-1)}</div></div>`;
+  }).join("");
+  const rings = TP.map(t => `<div class="k-ring"><div class="k-dial" style="--p:${Math.min(100, t[1] * 2)}"><b>${t[1]}</b></div><div class="k-rn">${t[0]}</div>${t[2] ? `<span class="k-proc">בתהליך ${t[2]}</span>` : ""}</div>`).join("");
+  const nav = TABS.map((t, i) => `<button type="button"${i ? "" : ' class="on" aria-current="page"'}><svg viewBox="0 0 24 24" aria-hidden="true">${ICONS[i]}</svg>${t}</button>`).join("");
+  return `<div class="d d5${o.full ? " full" : ""}"><div class="k-head"><div class="k-title">מלאי</div><div class="k-live"><i></i>חי · 08:42</div></div>
+<div class="k-kpis"><div class="k-kpi m"><span>מוכנים</span><b>${T.ready}</b></div><div class="k-kpi a"><span>מחכים</span><b>${T.wait}</b></div><div class="k-kpi r"><span>מלאי נמוך</span><b>${T.low}</b></div></div>
+<div class="k-sec"><b>שייקים</b><span>מוכן מול יעד 20 · קו כתום = הזמנות</span></div>${rows}
+<div class="k-sec" style="margin-top:16px"><b>תבלינים</b><span>מול יעד 50</span></div><div class="k-rings">${rings}</div>
+<nav class="k-nav">${nav}</nav></div>`;
+}
+
+// ---------- 6 · Kiosk ----------
+function r6(s){
+  const T = totals(s);
+  const rows = s.map(x => {
+    const lo = isLow(x.v), g = [];
+    if (lo) g.push(`<span class="q-tag lo">${x.v ? "נשאר 1!" : "נגמר!"}</span>`);
+    if (x.w) g.push(`<span class="q-tag y">מחכים ${x.w}</span>`);
+    if (x.h) g.push(`<span class="q-tag">בחצי ${x.h}</span>`);
+    if (x.m) g.push(`<span class="q-tag r">חסר: ${x.m}</span>`);
+    return `<div class="q-row${lo ? " low" : ""}" data-i="${x.i}"><div class="q-info"><div class="q-name">${x.n}</div>${g.length ? `<div class="q-tags">${g.join("")}</div>` : ""}</div>` +
+      `<div class="q-n">${x.v}</div>${pm(1, "q-btn")}${pm(-1, "q-btn")}</div>`;
+  }).join("");
+  const trows = TP.map(t => `<div class="q-row sm"><div class="q-info"><div class="q-name">${t[0]}</div>${t[2] ? `<div class="q-tags"><span class="q-tag">בתהליך ${t[2]}</span></div>` : ""}</div><div class="q-n">${t[1]}</div></div>`).join("");
+  return `<div class="d d6"><div class="q-top"><div class="q-title">מלאי</div><div class="q-clock">08:42</div></div>
+<div class="q-tabs">${tabs()}</div>
+<div class="q-sum"><div class="g"><b>${T.ready}</b>מוכנים</div><div class="y"><b>${T.wait}</b>מחכים</div><div class="r"><b>${T.miss}</b>חסר</div></div>
+<div class="q-h">שייקים</div>${rows}<div class="q-h">תבלינים</div>${trows}</div>`;
+}
+
+// ---------- 7 · Cork board ----------
+const NOTE = ["#ffd6e0","#cdf2d8","#d4e8ff","#ffe1c2","#e6dbff","#fffdf3"];
+const ROT = [-2.2,1.7,-1,2.1,-1.6,1.2,2.4,-0.7,0.9,-2.4];
+const PINS = ["","p-b","p-g","p-y"];
+function r7(s){
+  const notes = s.map(x => {
+    const lo = isLow(x.v);
+    return `<div class="n-note${lo ? " low" : ""}" data-i="${x.i}" style="--r:${ROT[x.i % 10]}deg;background:${NOTE[x.i % 6]}"><i class="pin ${PINS[x.i % 4]}"></i>` +
+      `<div class="n-name">${x.n}</div><div class="n-n">${x.v}</div>` +
+      (lo ? `<div class="n-scrib">${x.v ? "נשאר אחד!" : "נגמר!!"}</div>` : "") +
+      (x.w ? `<span class="n-y">מחכים ${x.w}</span>` : "") + (x.h ? `<div class="n-h">בחצי ${x.h}</div>` : "") + (x.m ? `<div class="n-r">חסר ${x.m}!</div>` : "") +
+      `<div class="n-pm">${pm(1)}${pm(-1)}</div></div>`;
+  }).join("");
+  const tags = TP.map((t, i) => `<div class="n-tag" style="--r:${ROT[(i + 3) % 10]}deg">${t[0]} <b>${t[1]}</b>${t[2] ? ` <i>בתהליך ${t[2]}</i>` : ""}</div>`).join("");
+  return `<div class="d d7"><div class="n-head"><i class="pin"></i><h2>מלאי</h2><p>${summary(s)}</p></div>
+<div class="n-tabs">${tabs()}</div><div class="n-grid">${notes}</div>
+<div class="n-lbl">תבלינים</div><div class="n-tags">${tags}</div></div>`;
+}
+
+// ---------- 8 · Pastel accordion ----------
+const PAL = {g:["#dff4e6","#23885a"], f:["#ffe5dc","#d0573b"], c:["#f1e3d6","#8a5a3c"], m:["#ece4ff","#6e4fc4"], l:["#fff4c2","#9a7a00"], t:["#dcefff","#2f6fb8"]};
+function r8(s, o){
+  const open = o.open == null ? "f" : o.open;
+  const sec = (key, title, pills, body) => {
+    const on = open === key;
+    return `<div class="a-sec${on ? " open" : ""}" style="--bg:${PAL[key][0]};--ac:${PAL[key][1]}"><button type="button" class="a-hd" data-acc="${key}" aria-expanded="${on}">` +
+      `<span class="a-t">${title}</span><span class="a-pills">${pills}</span><span class="a-chev" aria-hidden="true"></span></button>${on ? `<div class="a-body">${body}</div>` : ""}</div>`;
+  };
+  let h = `<div class="d d8"><div class="a-hi">בוקר טוב</div><div class="a-title">מלאי</div><div class="a-tabs">${tabs()}</div>`;
+  CATS.forEach(([k, title]) => {
+    const items = byCat(s, k), T = totals(items);
+    let pills = `<span class="pill g">${T.ready} מוכנים</span>`;
+    if (T.zero) pills += `<span class="pill r">${T.zero} אזל</span>`;
+    if (T.one) pills += `<span class="pill r">${T.one} כמעט נגמר</span>`;
+    if (T.wait) pills += `<span class="pill y">מחכים ${T.wait}</span>`;
+    if (T.miss) pills += `<span class="pill r">חסר מרכיב</span>`;
+    const body = items.map(x => {
+      const lo = isLow(x.v), c = [];
+      if (lo) c.push(`<span class="pill r">${lowWord(x.v)}</span>`);
+      if (x.w) c.push(`<span class="pill y">מחכים ${x.w}</span>`);
+      if (x.h) c.push(`<span class="pill">בחצי ${x.h}</span>`);
+      if (x.m) c.push(`<span class="pill r">חסר: ${x.m}</span>`);
+      return `<div class="a-row${lo ? " low" : ""}" data-i="${x.i}"><div class="nm">${x.n}${c.length ? `<div class="chips">${c.join("")}</div>` : ""}</div><div class="a-step">${pm(1)}<b>${x.v}</b>${pm(-1)}</div></div>`;
+    }).join("");
+    h += sec(k, title, pills, body);
+  });
+  const tbody = TP.map(t => `<div class="a-row"><div class="nm">${t[0]}${t[2] ? `<div class="chips"><span class="pill">בתהליך ${t[2]}</span></div>` : ""}</div><div class="a-step" style="padding:0 14px;min-height:44px"><b>${t[1]}</b></div></div>`).join("");
+  h += sec("t", "תבלינים", `<span class="pill">${TP.length} סוגים</span><span class="pill">בתהליך 18</span>`, tbody);
+  return h + `</div>`;
+}
+
+// ---------- 9 · Recipe book ----------
+const TABC = ["#f6c9b8","#cfe3c1","#f3dfa2","#d8d1ee"];
+const DIVIDER = `<svg class="r-div" viewBox="0 0 230 26" aria-hidden="true"><path d="M8 13 Q 60 1 115 13 T 222 13" fill="none" stroke="#c9a77c" stroke-width="2"/><g fill="#8fb36b"><ellipse cx="52" cy="7" rx="8" ry="3.6" transform="rotate(-24 52 7)"/><ellipse cx="74" cy="16" rx="7" ry="3.2" transform="rotate(22 74 16)"/><ellipse cx="160" cy="18" rx="8" ry="3.6" transform="rotate(24 160 18)"/><ellipse cx="182" cy="9" rx="7" ry="3.2" transform="rotate(-22 182 9)"/></g><circle cx="115" cy="13" r="6" fill="#e0785c"/><circle cx="104" cy="11" r="3.4" fill="#f2b33d"/><circle cx="126" cy="15" r="3.4" fill="#f2b33d"/></svg>`;
+const ORD = ["א׳","ב׳","ג׳","ד׳","ה׳","ו׳"];
+function r9(s){
+  const tb = TABS.map((t, i) => `<button type="button"${i ? "" : ' class="on" aria-current="page"'} style="--c:${TABC[i]}">${t}</button>`).join("");
+  let h = `<div class="d d9"><div class="r-tabs">${tb}</div><div class="r-cover"><small>מאסטר שייק</small><h2>ספר המלאי</h2><p>${summary(s)}</p>${DIVIDER}</div>`;
+  CATS.forEach(([k, title], ci) => {
+    h += `<div class="r-chap"><h3>פרק ${ORD[ci]} · ${title}</h3></div>`;
+    byCat(s, k).forEach(x => {
+      const lo = isLow(x.v), g = [];
+      if (lo) g.push(`<span class="r">${x.v ? "נשאר אחד — להכין!" : "אזל — להכין!"}</span>`);
+      if (x.w) g.push(`<span class="y">מחכים להזמנות: ${x.w}</span>`);
+      if (x.h) g.push(`<span class="h">בחצי: ${x.h}</span>`);
+      if (x.m) g.push(`<span class="r">חסר: ${x.m}</span>`);
+      if (!g.length) g.push(`<span class="ok">מוכן במקפיא</span>`);
+      h += `<div class="r-card${lo ? " low" : ""}" data-i="${x.i}"><div class="r-emo">${emo(x.e)}</div><div class="r-txt"><div class="r-name">${x.n}</div><div class="r-ing">${g.join("")}</div></div>` +
+        `<div class="r-side"><div class="r-stamp">${x.v}<small>${lo ? lowWord(x.v) === "אזל" ? "אזל" : "אחרון" : "מוכנים"}</small></div><div class="r-pm">${pm(1)}${pm(-1)}</div></div></div>`;
+    });
+  });
+  h += `<div class="r-chap"><h3>המזווה · תבלינים</h3></div><div class="r-jars">` +
+    TP.map(t => `<div class="r-jar"><div class="r-lid"></div><div class="r-body"><div class="r-lbl">${t[0]}<b>${t[1]}</b></div>${t[2] ? `<div class="r-proc">בתהליך ${t[2]}</div>` : ""}</div></div>`).join("") +
+    `</div>${DIVIDER}</div>`;
+  return h;
+}
+
+// ---------- 10 · Swiss ----------
+function r10(s){
+  const T = totals(s);
+  const cells = s.map(x => {
+    const lo = isLow(x.v), st = [];
+    if (lo) st.push(`<div class="s-st r">${lowWord(x.v)}</div>`);
+    if (x.w) st.push(`<div class="s-st"><i class="s-sq y"></i>מחכים ${x.w}</div>`);
+    if (x.h) st.push(`<div class="s-st"><i class="s-sq k"></i>בחצי ${x.h}</div>`);
+    if (x.m) st.push(`<div class="s-st r"><i class="s-sq r"></i>חסר ${x.m}</div>`);
+    return `<div class="s-cell${lo ? " low" : ""}" data-i="${x.i}"><div class="s-idx"><span>${String(x.i + 1).padStart(2, "0")}</span><i class="s-sq${lo ? " r" : ""}"></i></div>` +
+      `<div class="s-n s-disp">${x.v}</div><div class="s-nm">${x.n}</div>${st.join("")}<div class="s-pm">${pm(1)}${pm(-1)}</div></div>`;
+  }).join("");
+  const tc = TP.map(t => `<div class="s-tc"><b class="s-disp">${t[1]}</b><span>${t[0]}</span>${t[2] ? `<em>בתהליך ${t[2]}</em>` : ""}</div>`).join("");
+  return `<div class="d d10"><div class="s-meta"><span>מאסטר שייק</span><span>מקפיא / מלאי</span></div>
+<div class="s-title s-disp">מלאי</div><div class="s-tabs">${tabs()}</div>
+<div class="s-legend"><span><i class="s-sq"></i>מוכן</span><span><i class="s-sq y"></i>מחכים להזמנה</span><span><i class="s-sq r"></i>חסר / אזל</span></div>
+<div class="s-sum"><div><b class="s-disp">${T.ready}</b><span>מוכנים</span></div><div><b class="s-disp">${T.wait}</b><span>מחכים</span></div><div class="lo"><b class="s-disp">${T.low}</b><span>מלאי נמוך</span></div></div>
+<div class="s-label"><h3>שייקים</h3><span>${s.length}</span></div><div class="s-grid">${cells}</div>
+<div class="s-label" style="margin-top:22px"><h3>תבלינים</h3><span>${TP.length}</span></div><div class="s-tgrid">${tc}</div>
+<div class="s-foot"><span>מאסטר שייק</span><span>${s.length} שייקים · ${TP.length} תבלינים</span></div></div>`;
+}
+
+// ---------- the ten directions ----------
+const DIRS = [
+  {name:"טבלה כמו אקסל", feel:"בדיוק כמו הגיליון שאת כבר מכירה — שורות, עמודות וכל המספרים במבט אחד.", font:'"Noto Sans Hebrew",Arial,sans-serif', fs:23, r:r1},
+  {name:"אריחים עם מספר ענק", feel:"כל שייק באריח משלו והמספר ענק — רואים מה יש עוד לפני שקוראים.", font:'"Secular One",Heebo,Arial,sans-serif', fs:24, r:r2},
+  {name:"רשימת אייפון", feel:"נראה כמו ההגדרות בטלפון — רשימה נקייה, מסודרת ומוכרת מהיום הראשון.", font:'Heebo,Arial,sans-serif', fs:23, r:r3},
+  {name:"מגזין", feel:"כמו עיתון בוקר: כותרת אחת שאומרת מה חשוב היום, ומתחתיה כל המלאי.", font:'"Frank Ruhl Libre",Georgia,serif', fs:26, r:r4},
+  {name:"דאשבורד כהה", feel:"חדר בקרה: רקע כהה, פסים זוהרים, ומה שנגמר — זוהר באדום.", font:'Rubik,Arial,sans-serif', fs:23, r:r5},
+  {name:"קיוסק", feel:"כפתורים ענקיים וניגוד חזק — לוחצים גם עם כפפות בחדר הקירור.", font:'Alef,Arial,sans-serif', fs:25, r:r6},
+  {name:"פתקים על לוח שעם", feel:"כל שייק פתק צבעוני בכתב יד, נעוץ בנעץ על לוח — חם ואנושי.", font:'"Gveret Levin",cursive,sans-serif', fs:27, r:r7},
+  {name:"אקורדיון בפסטל", feel:"השייקים מקובצים לפי סוג בצבעים רכים — פותחים רק את מה שצריך עכשיו.", font:'"Varela Round",Arial,sans-serif', fs:23, r:r8},
+  {name:"ספר מתכונים", feel:"נייר חם, פרי ליד כל שייק והמספר בתוך חותמת — ביתי ונעים.", font:'"Suez One",Georgia,serif', fs:24, r:r9},
+  {name:"טיפוגרפי שוויצרי", feel:"שחור על לבן, רשת מדויקת, והמספר הוא העיצוב — חזק ושקט.", font:'Karantina,"Arial Narrow",Arial,sans-serif', fs:32, r:r10}
+];
+
+// ---------- rendering + routing ----------
+const $ = id => document.getElementById(id);
+const items = vals => SH.map((x, i) => Object.assign({}, x, {v: vals[i], i}));
+const BASE = SH.map(x => x.v);
+let cur = 0, V = null, OPEN = "f", lastY = 0, fromGallery = false;
+
+$("cards").innerHTML = DIRS.map((d, k) => `<article class="g-card" id="card-${k + 1}" data-n="${k + 1}">
+<div class="g-ch"><div class="g-badge">${k + 1}</div><div><div class="g-cn" style="font-family:${d.font.replace(/"/g, "'")};font-size:${d.fs}px">${d.name}</div><div class="g-cf">${d.feel}</div></div></div>
+<div class="g-pv" inert aria-hidden="true">${d.r(items(BASE), {full:false})}</div>
+<a class="g-open" href="#style-${k + 1}">לראות במסך מלא ←</a></article>`).join("");
+
+function draw(){
+  const body = $("fbody");
+  const keep = [...body.querySelectorAll("[data-keep]")].map(e => [e.scrollTop, e.scrollLeft]);
+  body.innerHTML = DIRS[cur - 1].r(items(V), {full:true, open:OPEN});
+  body.querySelectorAll("[data-keep]").forEach((e, j) => { if (keep[j]) { e.scrollTop = keep[j][0]; e.scrollLeft = keep[j][1]; } });
 }
 function route(){
-  var m = /^#style-(\d+)$/.exec(location.hash);
-  var n = m ? +m[1] : 0;
-  if (n >= 1 && n <= 10) openStyle(n); else closeStyle();
+  const m = /^#style-(\d+)$/.exec(location.hash), n = m ? +m[1] : 0;
+  if (n >= 1 && n <= DIRS.length){
+    if (!$("full").hidden && cur === n) return;
+    if ($("full").hidden) lastY = window.scrollY;
+    cur = n; V = BASE.slice(); OPEN = "f";
+    const d = DIRS[n - 1];
+    $("ftitle").textContent = `${n} · ${d.name}`;
+    $("fend").innerHTML = `<b>${n}</b>${d.name}<br>אהבת? תגידי לתומר: מספר ${n}.<br><button type="button" class="f-back" data-back>חזרה לכל הכיוונים</button>`;
+    draw();
+    $("gallery").hidden = true; $("full").hidden = false;
+    document.title = `${n} · ${d.name} — מאסטר שייק`;
+    window.scrollTo(0, 0);
+  } else if (!$("full").hidden || cur){
+    const was = cur; cur = 0;
+    $("full").hidden = true; $("gallery").hidden = false; $("fbody").innerHTML = "";
+    document.title = "מאסטר שייק — 10 כיוונים שונים לגמרי";
+    if (fromGallery) window.scrollTo(0, lastY);
+    else if (was) { const c = $("card-" + was); if (c) c.scrollIntoView({block:"start"}); }
+    fromGallery = false;
+  }
 }
+if ("scrollRestoration" in history) history.scrollRestoration = "manual";
 window.addEventListener("hashchange", route);
-
-full.addEventListener("click", function(e){
-  if (e.target.closest(".back")) {
-    if (cameFromGallery) { history.back(); }
-    else { history.replaceState(null, "", location.pathname + location.search); closeStyle(); }
+$("cards").addEventListener("click", e => {
+  const card = e.target.closest(".g-card"); if (!card) return;
+  e.preventDefault(); fromGallery = true; location.hash = "style-" + card.dataset.n;
+});
+document.addEventListener("click", e => {
+  if (e.target.closest("[data-back]")){
+    if (fromGallery) history.back();
+    else { history.replaceState(null, "", location.pathname + location.search); route(); }
     return;
   }
-  // in the big view the + / − buttons really change the number, so she can feel it
-  var b = e.target.closest(".pm");
-  if (!b) return;
-  var row = b.closest(".row"), n = row.querySelector(".n");
-  var v = Math.max(0, (parseInt(n.textContent, 10) || 0) + (b.classList.contains("plus") ? 1 : -1));
-  n.textContent = v;
-  row.className = row.className.replace(/\b(ok|low|zero|t-[gor])\b/g, "").replace(/\s+/g, " ").trim() + " " + lvl(v);
+  if ($("full").hidden) return;
+  const b = e.target.closest("[data-pm]");
+  if (b){ const it = b.closest("[data-i]"); if (!it) return; const i = +it.dataset.i; V[i] = Math.max(0, V[i] + (+b.dataset.pm)); draw(); return; }
+  const a = e.target.closest("[data-acc]");
+  if (a){ OPEN = OPEN === a.dataset.acc ? "" : a.dataset.acc; draw(); }
 });
-
 route();
 </script>
 </body>
