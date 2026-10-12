@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>מאסטר שייק · דף ההזמנות · 3 דרכים</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800&family=Rubik:wght@400;500;600;700&display=swap">
+<style>
+/* Same colours / font / radii as the live app (theme 11: dark "sheet") */
+:root {
+  --bg: #0b1220; --fg: #e8eef8; --muted: #9aabc6; --card: #111b2d; --border: #2a3a58;
+  --accent: #3ef2b4; --accent-fg: #04241a;
+  --font: "Rubik", "Heebo", Arial, sans-serif; --radius: 12px;
+  --c-wait: #ffbf47; --c-wait-bg: rgba(255,191,71,.12);
+  --c-short: #ff6b78; --c-short-bg: rgba(255,93,108,.13);
+  --c-done: #3ef2b4; --c-done-bg: rgba(62,242,180,.12);
+  --row-sep: #2a3a58; --zebra: #16223a; --hrow: #17233a; --hrow-line: #3d5078;
+  --btn-bg: #17243d; --btn-border: #34466b;
+  --h-color: #8af0d3;
+  --tap: 44px;
+  color-scheme: dark;
+  font-size: 15px;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--fg);
+  font-family: var(--font); font-size: 1rem; line-height: 1.35;
+  -webkit-tap-highlight-color: transparent; overflow-x: hidden;
+}
+button { font: inherit; color: inherit; cursor: pointer; }
+h1, h2, p { margin: 0; }
+a { color: inherit; }
+.bdi-num { unicode-bidi: isolate; direction: ltr; white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+#app { max-width: 720px; margin: 0 auto; padding: 0 12px 110px; }
+
+/* ---------- top: what is this page + the 3-way switch ---------- */
+.intro { padding: 16px 2px 8px; }
+.intro h1 { font-size: 1.45rem; font-weight: 700; letter-spacing: -.2px; }
+.intro p { color: var(--muted); margin-top: 4px; }
+
+.seg {
+  position: sticky; top: 0; z-index: 20;
+  margin: 0 -12px; padding: 8px 12px 10px;
+  background: var(--bg); box-shadow: 0 1px 0 #1f2b44, 0 8px 14px -8px rgba(0,0,0,.7);
+}
+.seg-in {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px;
+  padding: 4px; border-radius: 14px; background: #121c2e; border: 1px solid #24324d;
+}
+.seg-btn {
+  min-height: 56px; padding: 6px 4px; border: 1px solid transparent; border-radius: 10px;
+  background: transparent; color: #b4c2d8;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px;
+  touch-action: manipulation; transition: background .15s, border-color .15s, color .15s;
+}
+.seg-btn b { font-size: 1.07rem; font-weight: 700; }
+.seg-btn span { font-size: 15px; font-weight: 500; line-height: 1.15; white-space: nowrap; }
+.seg-btn[aria-pressed="true"] {
+  background: rgba(62,242,180,.13); border-color: rgba(62,242,180,.75); color: var(--accent);
+  text-shadow: 0 0 10px rgba(62,242,180,.5); box-shadow: 0 0 14px rgba(62,242,180,.2);
+}
+.seg-btn:focus-visible, .tap:focus-visible, .btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.explain {
+  margin: 12px 2px 0; padding: 10px 12px; border-radius: var(--radius);
+  background: var(--card); border: 1px solid var(--border);
+  font-size: 1.05rem; line-height: 1.45;
+}
+.explain b { color: var(--h-color); font-weight: 600; }
+
+.section-h {
+  display: flex; align-items: baseline; gap: 8px;
+  margin: 18px 0 8px; padding: 5px 2px 5px 4px;
+  border-bottom: 1px solid rgba(62,242,180,.32);
+  font-size: 16px; font-weight: 700; color: var(--h-color);
+}
+.section-h .count { color: var(--muted); font-weight: 500; font-size: 15px; }
+
+.design[hidden] { display: none; }
+
+/* ---------- shared pieces ---------- */
+.chip {
+  display: inline-flex; align-items: center; gap: 4px;
+  min-height: 30px; padding: 2px 10px; border-radius: 8px;
+  border: 1px solid #34466b; background: rgba(230,237,247,.05); color: #d3ddec;
+  font-size: 15px; font-weight: 600; line-height: 1.2; white-space: nowrap;
+}
+.chip.wait { background: var(--c-wait-bg); color: var(--c-wait); border-color: rgba(255,191,71,.65); }
+.chip.short { background: var(--c-short-bg); color: var(--c-short); border-color: rgba(255,93,108,.7); }
+.chip.done { background: var(--c-done-bg); color: var(--c-done); border-color: rgba(62,242,180,.65); }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  min-height: var(--tap); padding: 6px 16px; border-radius: 9px;
+  border: 1.5px solid var(--btn-border); background: var(--btn-bg); color: var(--fg);
+  font-weight: 600; font-size: 1rem; line-height: 1.15; text-decoration: none;
+  touch-action: manipulation; user-select: none; -webkit-user-select: none;
+}
+.btn:active { transform: translateY(1px); filter: brightness(.95); }
+.btn-accent { background: rgba(62,242,180,.13); border-color: rgba(62,242,180,.75); color: var(--accent); }
+.btn-done { background: var(--c-done); border-color: var(--c-done); color: var(--accent-fg); font-weight: 700; }
+.btn-ghost { background: transparent; border-color: transparent; color: var(--muted); }
+
+.num { font-variant-numeric: tabular-nums; }
+.muted { color: var(--muted); }
+
+/* the ▾ arrow: a 44px round target, rotates when open */
+.arrow {
+  flex: none; width: var(--tap); height: var(--tap);
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 10px; color: var(--muted); font-size: 18px; line-height: 1;
+  transition: transform .25s ease, color .2s;
+}
+.is-open .arrow { transform: rotate(180deg); color: var(--accent); }
+
+/* the slide open/close */
+.slide { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .28s ease; }
+.slide > .slide-in { overflow: hidden; min-height: 0; }
+.is-open > .slide, .is-open .slide { grid-template-rows: 1fr; }
+@media (prefers-reduced-motion: reduce) { .slide, .arrow { transition: none; } }
+
+/* ---------- details panel (designs 1 + 2) ---------- */
+.det { padding: 4px 4px 14px; display: flex; flex-direction: column; gap: 10px; }
+.facts { display: grid; grid-template-columns: auto 1fr; gap: 6px 12px; margin: 0; align-items: center; }
+.facts dt { color: var(--muted); font-size: 15px; }
+.facts dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+.phone {
+  display: inline-flex; align-items: center; gap: 6px; min-height: var(--tap);
+  color: var(--accent); text-decoration: none; font-weight: 600;
+}
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.note {
+  padding: 8px 10px; border-radius: 9px;
+  background: rgba(230,237,247,.04); border: 1px dashed #34466b; color: #d3ddec;
+}
+.note b { color: var(--muted); font-weight: 500; }
+.acts { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.acts .btn-main { flex: 1 1 170px; }
+.acts .btn-more { flex: none; padding-inline: 14px; }
+.from-bundle { color: var(--muted); font-size: 15px; }
+.done-mark { color: var(--c-done); font-weight: 700; }
+.part-mark { color: var(--c-wait); font-weight: 600; }
+
+/* ===== DESIGN 1: list ===== */
+.d1 { border-top: 1px solid var(--row-sep); }
+.d1-row { border-bottom: 1px solid var(--row-sep); }
+.d1-head {
+  width: 100%; min-height: 60px; padding: 8px 2px 8px 0;
+  display: flex; align-items: center; gap: 10px;
+  background: none; border: 0; text-align: start; touch-action: manipulation;
+}
+.d1-text { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.d1-name { font-weight: 600; font-size: 1.1rem; overflow-wrap: anywhere; }
+.d1-meta { color: var(--muted); font-size: 15px; display: flex; gap: 8px; }
+.d1-meta .dot { opacity: .6; }
+.d1-items { display: flex; flex-direction: column; border-top: 1px solid var(--row-sep); }
+.d1-item {
+  display: flex; align-items: center; gap: 8px; min-height: 38px;
+  border-bottom: 1px solid var(--row-sep); padding: 2px 2px;
+}
+.d1-item .nm { flex: 1 1 auto; min-width: 0; }
+.d1-item .q { flex: none; font-variant-numeric: tabular-nums; min-width: 64px; text-align: end; }
+
+/* ===== DESIGN 2: grid with an arrow ===== */
+.sheet {
+  width: 100%; border-collapse: separate; border-spacing: 0;
+  border: 1px solid #34466b; border-radius: 10px; overflow: hidden; table-layout: fixed;
+}
+.sheet th, .sheet td {
+  border-bottom: 1px solid var(--row-sep); border-inline-start: 1px solid var(--row-sep);
+  padding: 6px 8px; text-align: start; vertical-align: middle;
+}
+.sheet th:first-child, .sheet td:first-child { border-inline-start: 0; }
+.sheet thead th {
+  background: var(--hrow); color: var(--muted); font-weight: 600; font-size: 15px;
+  border-bottom: 1px solid var(--hrow-line); height: 40px;
+}
+.sheet tbody tr:last-child td { border-bottom: 0; }
+.d2 .r-main { cursor: pointer; }
+.d2 .r-main td { height: 52px; }
+.d2 .r-main.zebra td { background: var(--zebra); }
+.d2 .r-main.is-open td { background: rgba(62,242,180,.07); border-bottom-color: transparent; }
+.d2 .c-num { width: 70px; font-variant-numeric: tabular-nums; color: var(--muted); font-weight: 600; }
+.d2 .c-date { width: 64px; font-variant-numeric: tabular-nums; }
+.d2 .c-arr { width: 52px; padding: 0; text-align: center; }
+.d2 .c-name { font-weight: 600; overflow-wrap: anywhere; }
+.d2 .r-main .tap { background: none; border: 0; padding: 0; margin: 0 auto; }
+.d2 .r-sub > td { padding: 0; height: 0; border-inline-start: 0; }
+.d2 .r-sub:not(.is-open) > td { border-bottom: 0; }
+.d2 .r-sub.is-open > td { background: rgba(62,242,180,.04); border-bottom: 1px solid var(--hrow-line); }
+.d2 .det { padding: 6px 10px 14px; }
+.mini { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.mini th, .mini td { border: 1px solid var(--row-sep); padding: 5px 8px; text-align: start; }
+.mini th { background: var(--hrow); color: var(--muted); font-weight: 600; font-size: 15px; }
+.mini .k { width: 56px; text-align: center; font-variant-numeric: tabular-nums; }
+.mini .h { width: 72px; text-align: center; }
+.mini tbody tr:nth-child(even) td { background: var(--zebra); }
+
+/* ===== DESIGN 3: the full table, everything visible ===== */
+.d3 .sheet { font-size: 15px; }
+.d3 .sheet td { vertical-align: top; padding: 8px 6px; }
+.d3 .sheet thead th { padding: 6px; }
+.d3 tbody tr:nth-child(even) td { background: var(--zebra); }
+.d3 .c-num { width: 62px; font-variant-numeric: tabular-nums; color: var(--muted); font-weight: 600; }
+.d3 .c-name { width: 78px; font-weight: 600; overflow-wrap: anywhere; }
+.d3 .c-date { width: 52px; font-variant-numeric: tabular-nums; }
+.d3 .items { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 3px; }
+.d3 .items li { display: flex; gap: 6px; line-height: 1.3; }
+.d3 .items .q { flex: none; min-width: 22px; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--h-color); }
+.d3 .items .nm { flex: 1 1 auto; min-width: 0; overflow-wrap: anywhere; }
+.d3 .items .ok { flex: none; color: var(--c-done); }
+.d3 .cell-foot { margin-top: 6px; display: flex; flex-wrap: wrap; gap: 4px; }
+.d3 .cell-foot .chip { min-height: 26px; padding: 1px 7px; }
+@media (min-width: 560px) {
+  .d3 .c-num { width: 80px; } .d3 .c-name { width: 130px; } .d3 .c-date { width: 72px; }
+  .d3 .sheet td, .d3 .sheet thead th { padding-inline: 10px; }
+}
+
+.foot { margin-top: 22px; color: var(--muted); text-align: center; font-size: 15px; }
+
+/* toast */
+#toast {
+  position: fixed; left: 0; right: 0; bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+  margin: 0 auto; width: max-content; max-width: 90vw; z-index: 50;
+  padding: 12px 20px; border-radius: 999px;
+  background: #1a2742; border: 1px solid #34466b; color: var(--fg);
+  box-shadow: 0 6px 22px rgba(0,0,0,.6); font-weight: 600;
+  opacity: 0; transform: translateY(12px); pointer-events: none;
+  transition: opacity .2s, transform .2s;
+}
+#toast.show { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+<div id="app">
+  <header class="intro">
+    <h1>דף ההזמנות — 3 דרכים</h1>
+    <p>אותן 6 הזמנות לדוגמה, בשלוש צורות. בחרי למעלה ותראי איך זה נראה בטלפון.</p>
+  </header>
+
+  <nav class="seg" aria-label="בחירת דרך">
+    <div class="seg-in">
+      <button type="button" class="seg-btn" data-d="1" aria-pressed="true"><b>דרך 1</b><span>רשימה מתקפלת</span></button>
+      <button type="button" class="seg-btn" data-d="2" aria-pressed="false"><b>דרך 2</b><span>טבלה + חץ</span></button>
+      <button type="button" class="seg-btn" data-d="3" aria-pressed="false"><b>דרך 3</b><span>טבלה מלאה</span></button>
+    </div>
+  </nav>
+
+  <p class="explain" id="explain"></p>
+
+  <h2 class="section-h">הזמנות <span class="count">6</span></h2>
+
+  <section class="design d1" data-design="1"></section>
+  <section class="design d2" data-design="2" hidden></section>
+  <section class="design d3" data-design="3" hidden></section>
+
+  <p class="foot">זו רק דוגמה לבחירת עיצוב — שום כפתור כאן לא משנה הזמנה אמיתית.</p>
+</div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+  'use strict';
+
+  var EXPLAIN = {
+    1: '<b>רשימה מתקפלת:</b> כל הזמנה היא שורה אחת עם שם, מספר ותאריך — לוחצים על החץ ▾ והפרטים נפתחים מתחתיה.',
+    2: '<b>טבלה + חץ:</b> טבלה כמו באקסל עם מספר, שם ותאריך — לוחצים על החץ ▾ ונפתחת מתחת לשורה טבלה קטנה של מה שבהזמנה.',
+    3: '<b>טבלה מלאה (הרעיון של אנדראה):</b> טבלה כמו באקסל שבה רואים הכל בבת אחת, כולל כל השייקים בכל הזמנה, בלי ללחוץ על כלום.'
+  };
+
+  var T13 = 'מארז טעימות';
+  var T5 = 'מתנה בקטנה';
+  // l: [name, qty, packed, fromBundle]
+  var ORDERS = [
+    { num: '10234', name: 'ליאת כהן', date: '11.10', source: 'wix',
+      phone: '052-7741893', address: 'הרצל 18, רחובות', deliver: "יום ג' 13.10 · 18:00-21:00",
+      paid: true, bundle: T13, bundleFull: 'מארז טעימות - 13 שייקים',
+      lines: [
+        ['אסאי פראי', 1, 1, 1], ['טרופיקיץ', 1, 1, 1], ['שייק ניקוי ירוק', 1, 1, 1],
+        ['שיא של ויטמין C', 1, 1, 1], ['פאטה מורינגה', 1, 0, 1], ['Green Power', 1, 0, 1],
+        ['Iron Man', 1, 0, 1], ['שוקו-בננה נא', 1, 0, 1], ['תות-בננה פלוס', 1, 0, 1],
+        ['מנגו קלאסי', 1, 0, 1], ['מאקת נוגדי חמצון', 1, 0, 1], ['קופנגן לבן', 1, 0, 1],
+        ['יער של פירות', 1, 0, 1]
+      ] },
+    { num: '10241', name: 'מיכל לוי', date: '12.10', source: 'wix',
+      phone: '054-3318265', address: 'הנרקיסים 7, נס ציונה', deliver: "יום ד' 14.10 · 09:00-12:00",
+      paid: false, bundle: T5, bundleFull: 'מתנה בקטנה - 5 שייקים',
+      note: 'להשאיר ליד הדלת, לא לצלצל — יש תינוק ישן.',
+      lines: [
+        ['שוקו-בננה נא', 1, 0, 1], ['תות-בננה פלוס', 1, 0, 1], ['קופנגן לבן', 1, 0, 1],
+        ['אסאי פראי', 1, 0, 1], ['Iron Man', 1, 0, 1],
+        ['מנגו קלאסי', 2, 0, 0], ['שייק ניקוי ירוק', 1, 0, 0]
+      ] },
+    { num: 'M-12', name: 'רונית אברהם', date: '12.10', source: 'manual',
+      phone: '050-6624107', address: '', pickup: true, deliver: "יום ד' 14.10",
+      paid: true,
+      lines: [['תות-בננה פלוס', 2, 0, 0], ['קופנגן לבן', 1, 1, 0], ['שייק ניקוי ירוק', 2, 0, 0]] },
+    { num: '10229', name: 'נועה פרידמן', date: '10.10', source: 'wix',
+      phone: '058-2290634', address: 'ז׳בוטינסקי 41, ראשון לציון', deliver: "יום ב' 12.10 · 16:00-19:00",
+      paid: true,
+      lines: [['מנגו קלאסי', 2, 2, 0], ['טרופיקיץ', 1, 1, 0], ['אסאי פראי', 1, 1, 0]] },
+    { num: 'M-13', name: 'דנה שטרן', date: '12.10', source: 'manual',
+      phone: '053-8812450', address: 'הגפן 3, גדרה', deliver: "יום ה' 15.10 · 17:00-20:00",
+      paid: false,
+      lines: [['Green Power', 2, 0, 0], ['פאטה מורינגה', 1, 0, 0]] },
+    { num: '10245', name: 'יעל מזרחי', date: '12.10', source: 'wix',
+      phone: '052-9035571', address: 'שדרות בן גוריון 92, אשדוד', deliver: "יום ה' 15.10 · 12:00-15:00",
+      paid: true,
+      lines: [['מאקת נוגדי חמצון', 2, 0, 0], ['יער של פירות', 1, 0, 0], ['שוקו-בננה נא', 1, 0, 0]] }
+  ];
+  ORDERS.forEach(function (o) {
+    o.packed = o.lines.every(function (l) { return l[2] >= l[1]; });
+  });
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function num(s) { return '<bdi class="bdi-num">' + esc(s) + '</bdi>'; }
+  function lineName(l) { return esc(l[0]) + (l[3] ? '&nbsp;*' : ''); }
+  function packedTxt(l) {
+    if (l[2] >= l[1]) return '<span class="done-mark">✓</span>';
+    if (l[2] > 0) return '<span class="part-mark">' + num(l[2] + ' מ-' + l[1]) + '</span>';
+    return '<span class="muted">—</span>';
+  }
+  function tel(p) { return 'tel:+972' + p.replace(/-/g, '').replace(/^0/, ''); }
+
+  /* the details panel — same in designs 1 and 2; itemsHtml differs */
+  function details(o, itemsHtml) {
+    var h = '<div class="det">';
+    h += '<div class="chips">' +
+      (o.packed ? '<span class="chip done">ארוזה ✓</span>' : '<span class="chip wait">לארוז</span>') +
+      (o.paid ? '<span class="chip done">שולם</span>' : '<span class="chip short">לא שולם</span>') +
+      (o.pickup ? '<span class="chip">איסוף עצמי</span>' : '') +
+      '</div>';
+    h += '<dl class="facts">';
+    h += '<dt>טלפון</dt><dd><a class="phone" href="' + tel(o.phone) + '">📞 ' + num(o.phone) + '</a></dd>';
+    if (!o.pickup) h += '<dt>כתובת</dt><dd>' + esc(o.address) + '</dd>';
+    h += '<dt>' + (o.pickup ? 'איסוף' : 'מסירה') + '</dt><dd>' + esc(o.deliver) + '</dd>';
+    h += '</dl>';
+    if (o.note) h += '<div class="note"><b>הערה:</b> ' + esc(o.note) + '</div>';
+    h += itemsHtml;
+    if (o.bundle) h += '<div class="from-bundle">* מתוך ' + esc(o.bundle) + '</div>';
+    h += '<div class="acts">' +
+      (o.packed
+        ? '<button type="button" class="btn btn-done btn-main" data-demo>נמסרה ✓</button>'
+        : '<button type="button" class="btn btn-accent btn-main" data-demo>הכנסתי הכל ✓</button>') +
+      '<button type="button" class="btn btn-ghost btn-more" data-demo>עוד…</button></div>';
+    return h + '</div>';
+  }
+
+  /* ---------- design 1 ---------- */
+  function renderD1() {
+    return ORDERS.map(function (o, i) {
+      var items = '<div class="d1-items">' + o.lines.map(function (l) {
+        return '<div class="d1-item"><span class="nm">' + lineName(l) + '</span>' +
+          '<span class="q">' + packedTxt(l) + ' <span class="muted">/ ' + l[1] + '</span></span></div>';
+      }).join('') + '</div>';
+      var id = 'd1p' + i;
+      return '<div class="d1-row">' +
+        '<button type="button" class="d1-head tap" aria-expanded="false" aria-controls="' + id + '">' +
+          '<span class="d1-text"><span class="d1-name">' + esc(o.name) + '</span>' +
+          '<span class="d1-meta">' + num(o.num) + '<span class="dot">·</span>' + num(o.date) + '</span></span>' +
+          '<span class="arrow" aria-hidden="true">▾</span>' +
+        '</button>' +
+        '<div class="slide" id="' + id + '"><div class="slide-in">' + details(o, items) + '</div></div>' +
+      '</div>';
+    }).join('');
+  }
+
+  /* ---------- design 2 ---------- */
+  function renderD2() {
+    var rows = ORDERS.map(function (o, i) {
+      var items = '<table class="mini"><thead><tr><th>פריט</th><th class="k">כמה</th><th class="h">הוכנס</th></tr></thead><tbody>' +
+        o.lines.map(function (l) {
+          return '<tr><td>' + lineName(l) + '</td><td class="k">' + l[1] + '</td><td class="h">' + packedTxt(l) + '</td></tr>';
+        }).join('') + '</tbody></table>';
+      var id = 'd2p' + i;
+      return '<tr class="r-main' + (i % 2 ? ' zebra' : '') + '" data-row="' + i + '">' +
+          '<td class="c-num">' + num(o.num) + '</td>' +
+          '<td class="c-name">' + esc(o.name) + '</td>' +
+          '<td class="c-date">' + num(o.date) + '</td>' +
+          '<td class="c-arr"><button type="button" class="tap arrow" aria-expanded="false" aria-controls="' + id + '" aria-label="פרטי ההזמנה של ' + esc(o.name) + '">▾</button></td>' +
+        '</tr>' +
+        '<tr class="r-sub" data-sub="' + i + '"><td colspan="4"><div class="slide" id="' + id + '"><div class="slide-in">' + details(o, items) + '</div></div></td></tr>';
+    }).join('');
+    return '<table class="sheet"><thead><tr><th class="c-num">מס׳</th><th class="c-name">שם</th><th class="c-date">תאריך</th><th class="c-arr" aria-label="פתיחה"></th></tr></thead><tbody>' + rows + '</tbody></table>';
+  }
+
+  /* ---------- design 3 ---------- */
+  function renderD3() {
+    var rows = ORDERS.map(function (o) {
+      var items = '<ul class="items">' + o.lines.map(function (l) {
+        return '<li><span class="q">' + num(l[1] + '×') + '</span><span class="nm">' + lineName(l) + '</span>' +
+          (l[2] >= l[1] ? '<span class="ok" aria-label="הוכנס">✓</span>' : '') + '</li>';
+      }).join('') + '</ul>';
+      if (o.bundle) items += '<div class="from-bundle" style="margin-top:4px">* מתוך ' + esc(o.bundle) + '</div>';
+      if (o.packed) items += '<div class="cell-foot"><span class="chip done">ארוזה ✓</span></div>';
+      return '<tr><td class="c-num">' + num(o.num) + '</td><td class="c-name">' + esc(o.name) + '</td>' +
+        '<td class="c-date">' + num(o.date) + '</td><td>' + items + '</td></tr>';
+    }).join('');
+    return '<table class="sheet"><thead><tr><th class="c-num">מס׳</th><th class="c-name">שם</th><th class="c-date">תאריך</th><th>מה בהזמנה</th></tr></thead><tbody>' + rows + '</tbody></table>';
+  }
+
+  var host = {};
+  document.querySelectorAll('.design').forEach(function (s) { host[s.getAttribute('data-design')] = s; });
+  host[1].innerHTML = renderD1();
+  host[2].innerHTML = renderD2();
+  host[3].innerHTML = renderD3();
+
+  /* open / close */
+  function setOpen(btn, wrap, open) {
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    wrap.forEach(function (w) { w.classList.toggle('is-open', open); });
+  }
+  host[1].addEventListener('click', function (e) {
+    var head = e.target.closest('.d1-head');
+    if (!head) return;
+    var row = head.parentNode;
+    setOpen(head, [row], !row.classList.contains('is-open'));
+  });
+  host[2].addEventListener('click', function (e) {
+    var tr = e.target.closest('.r-main');
+    if (!tr) return;
+    var sub = tr.nextElementSibling;
+    setOpen(tr.querySelector('.arrow'), [tr, sub], !tr.classList.contains('is-open'));
+  });
+
+  /* demo buttons */
+  var toastEl = document.getElementById('toast'), toastT;
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('[data-demo]')) return;
+    toastEl.textContent = 'זו רק דוגמה';
+    toastEl.classList.add('show');
+    clearTimeout(toastT);
+    toastT = setTimeout(function () { toastEl.classList.remove('show'); }, 1600);
+  });
+
+  /* the 3-way switch (remembered in the link: #1 / #2 / #3) */
+  var segBtns = document.querySelectorAll('.seg-btn');
+  function show(d) {
+    d = String(d);
+    if (!EXPLAIN[d]) d = '1';
+    segBtns.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-d') === d ? 'true' : 'false'); });
+    Object.keys(host).forEach(function (k) { host[k].hidden = k !== d; });
+    document.getElementById('explain').innerHTML = EXPLAIN[d];
+    if (location.hash !== '#' + d) history.replaceState(null, '', '#' + d);
+  }
+  segBtns.forEach(function (b) { b.addEventListener('click', function () { show(b.getAttribute('data-d')); }); });
+  show((location.hash || '#1').slice(1));
+})();
+</script>
+</body>
+</html>
